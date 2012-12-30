@@ -13,16 +13,8 @@ tokens {
     RPAREN = ')';
 }
 
-/*@lexer::namespace { SimpleCalc }
-@parser::namespace { SimpleCalc }*/
-
-/*@header {
-    using System;
-}*/
-
 @rulecatch {
-    catch (Exception e)
-    {
+    catch (Exception e) {
         throw e;
     }
 }
@@ -31,8 +23,7 @@ tokens {
     protected Object recoverFromMismatchedToken(IntStream input,
                                                 int ttype,
                                                 BitSet follow)
-            throws RecognitionException
-    {  
+            throws RecognitionException {
         throw new MismatchedTokenException(ttype, input);
     } 
 }
