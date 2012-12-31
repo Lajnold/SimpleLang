@@ -1,3 +1,4 @@
+package simplecalc;
 
 public class ExpressionException extends RuntimeException {
 

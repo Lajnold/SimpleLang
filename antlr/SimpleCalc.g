@@ -1,58 +1,62 @@
 grammar SimpleCalc;
 
-/*options {
-}*/
+options {
+  output = AST;
+}
 
 tokens {
-    PLUS = '+';
-    MINUS = '-';
-    TIMES = '*';
-    DIVIDED_BY = '/';
-    POINT = '.';
-    LPAREN = '(';
-    RPAREN = ')';
+  PLUS = '+';
+  MINUS = '-';
+  TIMES = '*';
+  DIVIDED_BY = '/';
+  POINT = '.';
+  LPAREN = '(';
+  RPAREN = ')';
+  X;
+}
+
+@lexer::header {
+  package simplecalc.generated;
+}
+@parser::header {
+  package simplecalc.generated;
 }
 
 @rulecatch {
-    catch (Exception e) {
-        throw e;
-    }
+  catch (Exception e) {
+    throw e;
+  }
 }
 
 @members {
-    protected Object recoverFromMismatchedToken(IntStream input,
-                                                int ttype,
-                                                BitSet follow)
-            throws RecognitionException {
-        throw new MismatchedTokenException(ttype, input);
-    } 
+ protected Object recoverFromMismatchedToken(IntStream input,
+                                             int ttype,
+                                             BitSet follow)
+        throws RecognitionException {
+    throw new MismatchedTokenException(ttype, input);
+  }
 }
 
-public parse returns [double value]
-  : a=addSubExpr EOF { $value = $a.value; }
+public parse
+  : addSubExpr^ EOF!
   ;
 
-addSubExpr returns [double value]
-  : a=mulDivExpr { $value = $a.value; }
-    ( PLUS b=mulDivExpr { $value += $b.value; }
-    | MINUS b=mulDivExpr { $value -= $b.value; }
-    )*
+addSubExpr
+  : a=mulDivExpr^ ((PLUS | MINUS) mulDivExpr)*
   ;
   
-mulDivExpr returns [double value]
-  : a=atom { $value = $a.value; }
-    ( TIMES b=atom { $value *= $b.value; }
-    | DIVIDED_BY b=atom { $value /= $b.value; }
-    )*
+mulDivExpr
+  : atom^ ((TIMES | DIVIDED_BY) atom)*
   ;
   
-atom returns [double value]
-  : n=NUMBER { $value = Double.parseDouble($n.getText()); }
-  | LPAREN a=addSubExpr RPAREN { $value = $a.value; }
+atom
+  : NUMBER                           ->  ^(PLUS NUMBER)
+  | (sign=MINUS | sign=PLUS) NUMBER  ->  ^($sign NUMBER)
+  | LPAREN addSubExpr RPAREN         ->  addSubExpr
   ;
 
 NUMBER
-  : MINUS? (DIGIT)+ (POINT (DIGIT)+)?
+  : (DIGIT)+ (POINT (DIGIT)+)?
   ;
   
 fragment DIGIT
