@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g 2013-01-01 16:29:49
+// $ANTLR 3.4 /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g 2013-01-01 20:40:36
 
   package calculator.generated;
 
@@ -15,19 +15,28 @@ public class CalculatorLexer extends Lexer {
     public static final int ASSIGN=5;
     public static final int DIGIT=6;
     public static final int DIVIDED_BY=7;
-    public static final int ID=8;
-    public static final int LPAREN=9;
-    public static final int MINUS=10;
-    public static final int NUMBER=11;
-    public static final int PLUS=12;
-    public static final int POINT=13;
-    public static final int RPAREN=14;
-    public static final int TIMES=15;
-    public static final int T_ARG=16;
-    public static final int T_ASSIGN=17;
-    public static final int T_CALL=18;
-    public static final int T_VAR=19;
-    public static final int WHITESPACE=20;
+    public static final int HEXDIGIT=8;
+    public static final int ID=9;
+    public static final int LPAREN=10;
+    public static final int MINUS=11;
+    public static final int NUMBER=12;
+    public static final int PLUS=13;
+    public static final int POINT=14;
+    public static final int RPAREN=15;
+    public static final int TIMES=16;
+    public static final int T_ARG=17;
+    public static final int T_ASSIGN=18;
+    public static final int T_CALL=19;
+    public static final int T_VAR=20;
+    public static final int WHITESPACE=21;
+
+      @Override
+      public void displayRecognitionError(String[] tokenNames,
+                                          RecognitionException e) {
+              // Don't display any error messages; the situation is taken care of by
+              // throwing exceptions.
+          }
+
 
     // delegates
     // delegators
@@ -49,8 +58,8 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = ASSIGN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:6:8: ( '=' )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:6:10: '='
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:14:8: ( '=' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:14:10: '='
             {
             match('='); 
 
@@ -70,8 +79,8 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = DIVIDED_BY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:7:12: ( '/' )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:7:14: '/'
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:15:12: ( '/' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:15:14: '/'
             {
             match('/'); 
 
@@ -91,8 +100,8 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = LPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:8:8: ( '(' )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:8:10: '('
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:16:8: ( '(' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:16:10: '('
             {
             match('('); 
 
@@ -112,8 +121,8 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:9:7: ( '-' )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:9:9: '-'
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:17:7: ( '-' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:17:9: '-'
             {
             match('-'); 
 
@@ -133,8 +142,8 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:10:6: ( '+' )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:10:8: '+'
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:18:6: ( '+' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:18:8: '+'
             {
             match('+'); 
 
@@ -154,8 +163,8 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = POINT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:11:7: ( '.' )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:11:9: '.'
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:19:7: ( '.' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:19:9: '.'
             {
             match('.'); 
 
@@ -175,8 +184,8 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = RPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:12:8: ( ')' )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:12:10: ')'
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:20:8: ( ')' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:20:10: ')'
             {
             match(')'); 
 
@@ -196,8 +205,8 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = TIMES;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:13:7: ( '*' )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:13:9: '*'
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:21:7: ( '*' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:21:9: '*'
             {
             match('*'); 
 
@@ -217,8 +226,8 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:82:3: ( ( ALPHA | '_' ) ( ALPHA | DIGIT | '_' )* )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:82:5: ( ALPHA | '_' ) ( ALPHA | DIGIT | '_' )*
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:93:3: ( ( ALPHA | '_' ) ( ALPHA | DIGIT | '_' )* )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:93:5: ( ALPHA | '_' ) ( ALPHA | DIGIT | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -230,7 +239,7 @@ public class CalculatorLexer extends Lexer {
             }
 
 
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:82:19: ( ALPHA | DIGIT | '_' )*
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:93:19: ( ALPHA | DIGIT | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -280,63 +289,63 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = NUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:86:3: ( ( DIGIT )+ ( POINT ( DIGIT )+ )? )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:86:5: ( DIGIT )+ ( POINT ( DIGIT )+ )?
-            {
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:86:5: ( DIGIT )+
-            int cnt2=0;
-            loop2:
-            do {
-                int alt2=2;
-                int LA2_0 = input.LA(1);
-
-                if ( ((LA2_0 >= '0' && LA2_0 <= '9')) ) {
-                    alt2=1;
-                }
-
-
-                switch (alt2) {
-            	case 1 :
-            	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
-            	    {
-            	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-            	        input.consume();
-            	    }
-            	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    if ( cnt2 >= 1 ) break loop2;
-                        EarlyExitException eee =
-                            new EarlyExitException(2, input);
-                        throw eee;
-                }
-                cnt2++;
-            } while (true);
-
-
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:86:14: ( POINT ( DIGIT )+ )?
-            int alt4=2;
-            int LA4_0 = input.LA(1);
-
-            if ( (LA4_0=='.') ) {
-                alt4=1;
-            }
-            switch (alt4) {
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:97:3: ( ( '1' .. '9' ) ( DIGIT )* | ( DIGIT )+ POINT ( DIGIT )+ | '0' ( '0' .. '7' )+ | '0x1.' ( HEXDIGIT )+ 'p' ( PLUS | MINUS )? ( DIGIT )+ | '0x' ( HEXDIGIT )+ | ( DIGIT )+ ( POINT ( DIGIT )+ )? 'e' ( PLUS | MINUS )? ( DIGIT )+ )
+            int alt15=6;
+            alt15 = dfa15.predict(input);
+            switch (alt15) {
                 case 1 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:86:15: POINT ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:97:5: ( '1' .. '9' ) ( DIGIT )*
                     {
-                    mPOINT(); 
+                    if ( (input.LA(1) >= '1' && input.LA(1) <= '9') ) {
+                        input.consume();
+                    }
+                    else {
+                        MismatchedSetException mse = new MismatchedSetException(null,input);
+                        recover(mse);
+                        throw mse;
+                    }
 
 
-                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:86:21: ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:97:16: ( DIGIT )*
+                    loop2:
+                    do {
+                        int alt2=2;
+                        int LA2_0 = input.LA(1);
+
+                        if ( ((LA2_0 >= '0' && LA2_0 <= '9')) ) {
+                            alt2=1;
+                        }
+
+
+                        switch (alt2) {
+                    	case 1 :
+                    	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                    	    {
+                    	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+                    	        input.consume();
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop2;
+                        }
+                    } while (true);
+
+
+                    }
+                    break;
+                case 2 :
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:98:5: ( DIGIT )+ POINT ( DIGIT )+
+                    {
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:98:5: ( DIGIT )+
                     int cnt3=0;
                     loop3:
                     do {
@@ -375,14 +384,433 @@ public class CalculatorLexer extends Lexer {
                     } while (true);
 
 
+                    mPOINT(); 
+
+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:98:18: ( DIGIT )+
+                    int cnt4=0;
+                    loop4:
+                    do {
+                        int alt4=2;
+                        int LA4_0 = input.LA(1);
+
+                        if ( ((LA4_0 >= '0' && LA4_0 <= '9')) ) {
+                            alt4=1;
+                        }
+
+
+                        switch (alt4) {
+                    	case 1 :
+                    	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                    	    {
+                    	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+                    	        input.consume();
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt4 >= 1 ) break loop4;
+                                EarlyExitException eee =
+                                    new EarlyExitException(4, input);
+                                throw eee;
+                        }
+                        cnt4++;
+                    } while (true);
+
+
+                    }
+                    break;
+                case 3 :
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:99:5: '0' ( '0' .. '7' )+
+                    {
+                    match('0'); 
+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:99:9: ( '0' .. '7' )+
+                    int cnt5=0;
+                    loop5:
+                    do {
+                        int alt5=2;
+                        int LA5_0 = input.LA(1);
+
+                        if ( ((LA5_0 >= '0' && LA5_0 <= '7')) ) {
+                            alt5=1;
+                        }
+
+
+                        switch (alt5) {
+                    	case 1 :
+                    	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                    	    {
+                    	    if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
+                    	        input.consume();
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt5 >= 1 ) break loop5;
+                                EarlyExitException eee =
+                                    new EarlyExitException(5, input);
+                                throw eee;
+                        }
+                        cnt5++;
+                    } while (true);
+
+
+                    }
+                    break;
+                case 4 :
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:100:5: '0x1.' ( HEXDIGIT )+ 'p' ( PLUS | MINUS )? ( DIGIT )+
+                    {
+                    match("0x1."); 
+
+
+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:100:12: ( HEXDIGIT )+
+                    int cnt6=0;
+                    loop6:
+                    do {
+                        int alt6=2;
+                        int LA6_0 = input.LA(1);
+
+                        if ( ((LA6_0 >= '0' && LA6_0 <= '9')||(LA6_0 >= 'a' && LA6_0 <= 'f')) ) {
+                            alt6=1;
+                        }
+
+
+                        switch (alt6) {
+                    	case 1 :
+                    	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                    	    {
+                    	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
+                    	        input.consume();
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt6 >= 1 ) break loop6;
+                                EarlyExitException eee =
+                                    new EarlyExitException(6, input);
+                                throw eee;
+                        }
+                        cnt6++;
+                    } while (true);
+
+
+                    match('p'); 
+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:100:26: ( PLUS | MINUS )?
+                    int alt7=2;
+                    int LA7_0 = input.LA(1);
+
+                    if ( (LA7_0=='+'||LA7_0=='-') ) {
+                        alt7=1;
+                    }
+                    switch (alt7) {
+                        case 1 :
+                            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                            {
+                            if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
+                                input.consume();
+                            }
+                            else {
+                                MismatchedSetException mse = new MismatchedSetException(null,input);
+                                recover(mse);
+                                throw mse;
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:100:42: ( DIGIT )+
+                    int cnt8=0;
+                    loop8:
+                    do {
+                        int alt8=2;
+                        int LA8_0 = input.LA(1);
+
+                        if ( ((LA8_0 >= '0' && LA8_0 <= '9')) ) {
+                            alt8=1;
+                        }
+
+
+                        switch (alt8) {
+                    	case 1 :
+                    	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                    	    {
+                    	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+                    	        input.consume();
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt8 >= 1 ) break loop8;
+                                EarlyExitException eee =
+                                    new EarlyExitException(8, input);
+                                throw eee;
+                        }
+                        cnt8++;
+                    } while (true);
+
+
+                    }
+                    break;
+                case 5 :
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:101:5: '0x' ( HEXDIGIT )+
+                    {
+                    match("0x"); 
+
+
+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:101:10: ( HEXDIGIT )+
+                    int cnt9=0;
+                    loop9:
+                    do {
+                        int alt9=2;
+                        int LA9_0 = input.LA(1);
+
+                        if ( ((LA9_0 >= '0' && LA9_0 <= '9')||(LA9_0 >= 'a' && LA9_0 <= 'f')) ) {
+                            alt9=1;
+                        }
+
+
+                        switch (alt9) {
+                    	case 1 :
+                    	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                    	    {
+                    	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
+                    	        input.consume();
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt9 >= 1 ) break loop9;
+                                EarlyExitException eee =
+                                    new EarlyExitException(9, input);
+                                throw eee;
+                        }
+                        cnt9++;
+                    } while (true);
+
+
+                    }
+                    break;
+                case 6 :
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:102:5: ( DIGIT )+ ( POINT ( DIGIT )+ )? 'e' ( PLUS | MINUS )? ( DIGIT )+
+                    {
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:102:5: ( DIGIT )+
+                    int cnt10=0;
+                    loop10:
+                    do {
+                        int alt10=2;
+                        int LA10_0 = input.LA(1);
+
+                        if ( ((LA10_0 >= '0' && LA10_0 <= '9')) ) {
+                            alt10=1;
+                        }
+
+
+                        switch (alt10) {
+                    	case 1 :
+                    	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                    	    {
+                    	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+                    	        input.consume();
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt10 >= 1 ) break loop10;
+                                EarlyExitException eee =
+                                    new EarlyExitException(10, input);
+                                throw eee;
+                        }
+                        cnt10++;
+                    } while (true);
+
+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:102:12: ( POINT ( DIGIT )+ )?
+                    int alt12=2;
+                    int LA12_0 = input.LA(1);
+
+                    if ( (LA12_0=='.') ) {
+                        alt12=1;
+                    }
+                    switch (alt12) {
+                        case 1 :
+                            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:102:13: POINT ( DIGIT )+
+                            {
+                            mPOINT(); 
+
+
+                            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:102:19: ( DIGIT )+
+                            int cnt11=0;
+                            loop11:
+                            do {
+                                int alt11=2;
+                                int LA11_0 = input.LA(1);
+
+                                if ( ((LA11_0 >= '0' && LA11_0 <= '9')) ) {
+                                    alt11=1;
+                                }
+
+
+                                switch (alt11) {
+                            	case 1 :
+                            	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                            	    {
+                            	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+                            	        input.consume();
+                            	    }
+                            	    else {
+                            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                            	        recover(mse);
+                            	        throw mse;
+                            	    }
+
+
+                            	    }
+                            	    break;
+
+                            	default :
+                            	    if ( cnt11 >= 1 ) break loop11;
+                                        EarlyExitException eee =
+                                            new EarlyExitException(11, input);
+                                        throw eee;
+                                }
+                                cnt11++;
+                            } while (true);
+
+
+                            }
+                            break;
+
+                    }
+
+
+                    match('e'); 
+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:102:32: ( PLUS | MINUS )?
+                    int alt13=2;
+                    int LA13_0 = input.LA(1);
+
+                    if ( (LA13_0=='+'||LA13_0=='-') ) {
+                        alt13=1;
+                    }
+                    switch (alt13) {
+                        case 1 :
+                            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                            {
+                            if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
+                                input.consume();
+                            }
+                            else {
+                                MismatchedSetException mse = new MismatchedSetException(null,input);
+                                recover(mse);
+                                throw mse;
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:102:48: ( DIGIT )+
+                    int cnt14=0;
+                    loop14:
+                    do {
+                        int alt14=2;
+                        int LA14_0 = input.LA(1);
+
+                        if ( ((LA14_0 >= '0' && LA14_0 <= '9')) ) {
+                            alt14=1;
+                        }
+
+
+                        switch (alt14) {
+                    	case 1 :
+                    	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+                    	    {
+                    	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+                    	        input.consume();
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt14 >= 1 ) break loop14;
+                                EarlyExitException eee =
+                                    new EarlyExitException(14, input);
+                                throw eee;
+                        }
+                        cnt14++;
+                    } while (true);
+
+
                     }
                     break;
 
             }
-
-
-            }
-
             state.type = _type;
             state.channel = _channel;
         }
@@ -395,7 +823,7 @@ public class CalculatorLexer extends Lexer {
     // $ANTLR start "DIGIT"
     public final void mDIGIT() throws RecognitionException {
         try {
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:90:3: ( '0' .. '9' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:106:3: ( '0' .. '9' )
             // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -418,10 +846,36 @@ public class CalculatorLexer extends Lexer {
     }
     // $ANTLR end "DIGIT"
 
+    // $ANTLR start "HEXDIGIT"
+    public final void mHEXDIGIT() throws RecognitionException {
+        try {
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:110:3: ( '0' .. '9' | 'a' .. 'f' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
+            {
+            if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
+                input.consume();
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;
+            }
+
+
+            }
+
+
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "HEXDIGIT"
+
     // $ANTLR start "ALPHA"
     public final void mALPHA() throws RecognitionException {
         try {
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:94:3: ( 'a' .. 'z' | 'A' .. 'Z' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:114:3: ( 'a' .. 'z' | 'A' .. 'Z' )
             // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
@@ -449,22 +903,22 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:99:3: ( ( ' ' | '\\t' )+ )
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:99:5: ( ' ' | '\\t' )+
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:119:3: ( ( ' ' | '\\t' )+ )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:119:5: ( ' ' | '\\t' )+
             {
-            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:99:5: ( ' ' | '\\t' )+
-            int cnt5=0;
-            loop5:
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:119:5: ( ' ' | '\\t' )+
+            int cnt16=0;
+            loop16:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt16=2;
+                int LA16_0 = input.LA(1);
 
-                if ( (LA5_0=='\t'||LA5_0==' ') ) {
-                    alt5=1;
+                if ( (LA16_0=='\t'||LA16_0==' ') ) {
+                    alt16=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt16) {
             	case 1 :
             	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:
             	    {
@@ -482,12 +936,12 @@ public class CalculatorLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt5 >= 1 ) break loop5;
+            	    if ( cnt16 >= 1 ) break loop16;
                         EarlyExitException eee =
-                            new EarlyExitException(5, input);
+                            new EarlyExitException(16, input);
                         throw eee;
                 }
-                cnt5++;
+                cnt16++;
             } while (true);
 
 
@@ -506,46 +960,46 @@ public class CalculatorLexer extends Lexer {
 
     public void mTokens() throws RecognitionException {
         // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:1:8: ( ASSIGN | DIVIDED_BY | LPAREN | MINUS | PLUS | POINT | RPAREN | TIMES | ID | NUMBER | WHITESPACE )
-        int alt6=11;
+        int alt17=11;
         switch ( input.LA(1) ) {
         case '=':
             {
-            alt6=1;
+            alt17=1;
             }
             break;
         case '/':
             {
-            alt6=2;
+            alt17=2;
             }
             break;
         case '(':
             {
-            alt6=3;
+            alt17=3;
             }
             break;
         case '-':
             {
-            alt6=4;
+            alt17=4;
             }
             break;
         case '+':
             {
-            alt6=5;
+            alt17=5;
             }
             break;
         case '.':
             {
-            alt6=6;
+            alt17=6;
             }
             break;
         case ')':
             {
-            alt6=7;
+            alt17=7;
             }
             break;
         case '*':
             {
-            alt6=8;
+            alt17=8;
             }
             break;
         case 'A':
@@ -602,7 +1056,7 @@ public class CalculatorLexer extends Lexer {
         case 'y':
         case 'z':
             {
-            alt6=9;
+            alt17=9;
             }
             break;
         case '0':
@@ -616,24 +1070,24 @@ public class CalculatorLexer extends Lexer {
         case '8':
         case '9':
             {
-            alt6=10;
+            alt17=10;
             }
             break;
         case '\t':
         case ' ':
             {
-            alt6=11;
+            alt17=11;
             }
             break;
         default:
             NoViableAltException nvae =
-                new NoViableAltException("", 6, 0, input);
+                new NoViableAltException("", 17, 0, input);
 
             throw nvae;
 
         }
 
-        switch (alt6) {
+        switch (alt17) {
             case 1 :
                 // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:1:10: ASSIGN
                 {
@@ -728,6 +1182,72 @@ public class CalculatorLexer extends Lexer {
     }
 
 
+    protected DFA15 dfa15 = new DFA15(this);
+    static final String DFA15_eotS =
+        "\1\uffff\1\4\1\uffff\1\4\4\uffff\1\15\1\uffff\1\16\1\14\4\uffff";
+    static final String DFA15_eofS =
+        "\20\uffff";
+    static final String DFA15_minS =
+        "\1\60\3\56\1\uffff\1\60\1\uffff\1\60\2\56\1\60\1\56\4\uffff";
+    static final String DFA15_maxS =
+        "\1\71\1\145\1\170\1\145\1\uffff\1\71\1\uffff\1\146\3\145\1\56\4"+
+        "\uffff";
+    static final String DFA15_acceptS =
+        "\4\uffff\1\1\1\uffff\1\6\5\uffff\1\5\1\3\1\2\1\4";
+    static final String DFA15_specialS =
+        "\20\uffff}>";
+    static final String[] DFA15_transitionS = {
+            "\1\2\11\1",
+            "\1\5\1\uffff\12\3\53\uffff\1\6",
+            "\1\5\1\uffff\10\10\2\11\53\uffff\1\6\22\uffff\1\7",
+            "\1\5\1\uffff\12\3\53\uffff\1\6",
+            "",
+            "\12\12",
+            "",
+            "\1\14\1\13\10\14\47\uffff\6\14",
+            "\1\5\1\uffff\10\10\2\11\53\uffff\1\6",
+            "\1\5\1\uffff\12\11\53\uffff\1\6",
+            "\12\12\53\uffff\1\6",
+            "\1\17",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] DFA15_eot = DFA.unpackEncodedString(DFA15_eotS);
+    static final short[] DFA15_eof = DFA.unpackEncodedString(DFA15_eofS);
+    static final char[] DFA15_min = DFA.unpackEncodedStringToUnsignedChars(DFA15_minS);
+    static final char[] DFA15_max = DFA.unpackEncodedStringToUnsignedChars(DFA15_maxS);
+    static final short[] DFA15_accept = DFA.unpackEncodedString(DFA15_acceptS);
+    static final short[] DFA15_special = DFA.unpackEncodedString(DFA15_specialS);
+    static final short[][] DFA15_transition;
+
+    static {
+        int numStates = DFA15_transitionS.length;
+        DFA15_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA15_transition[i] = DFA.unpackEncodedString(DFA15_transitionS[i]);
+        }
+    }
+
+    class DFA15 extends DFA {
+
+        public DFA15(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 15;
+            this.eot = DFA15_eot;
+            this.eof = DFA15_eof;
+            this.min = DFA15_min;
+            this.max = DFA15_max;
+            this.accept = DFA15_accept;
+            this.special = DFA15_special;
+            this.transition = DFA15_transition;
+        }
+        public String getDescription() {
+            return "96:1: NUMBER : ( ( '1' .. '9' ) ( DIGIT )* | ( DIGIT )+ POINT ( DIGIT )+ | '0' ( '0' .. '7' )+ | '0x1.' ( HEXDIGIT )+ 'p' ( PLUS | MINUS )? ( DIGIT )+ | '0x' ( HEXDIGIT )+ | ( DIGIT )+ ( POINT ( DIGIT )+ )? 'e' ( PLUS | MINUS )? ( DIGIT )+ );";
+        }
+    }
  
 
 }

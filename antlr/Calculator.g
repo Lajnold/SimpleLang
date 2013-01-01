@@ -34,13 +34,24 @@ tokens {
   }
 }
 
-@members {
- protected Object recoverFromMismatchedToken(IntStream input,
-                                             int ttype,
-                                             BitSet follow)
-        throws RecognitionException {
-    throw new MismatchedTokenException(ttype, input);
+@parser::members {
+  @Override
+  protected Object recoverFromMismatchedToken(IntStream input,
+                                              int ttype,
+                                              BitSet follow)
+          throws RecognitionException {
+      // Don't recover; throw an exception instead.
+      throw new MismatchedTokenException(ttype, input);
   }
+}
+
+@lexer::members {
+  @Override
+  public void displayRecognitionError(String[] tokenNames,
+                                      RecognitionException e) {
+          // Don't display any error messages; the situation is taken care of by
+          // throwing exceptions.
+      }
 }
 
 
@@ -83,11 +94,20 @@ ID
   ;
 
 NUMBER
-  : (DIGIT)+ (POINT (DIGIT)+)?
+  : ('1'..'9') DIGIT*                            /* Integer */
+  | DIGIT+ POINT DIGIT+                          /* Decimal floating-point number */
+  | '0' ('0'..'7')+                              /* Octal integer */
+  | '0x1.' HEXDIGIT+ 'p' (PLUS | MINUS)? DIGIT+  /* Hexadecimal floating-point number */
+  | '0x' HEXDIGIT+                               /* Hexadecimal integer */
+  | DIGIT+ (POINT DIGIT+)? 'e' (PLUS | MINUS)? DIGIT+  /* Scientific notation */
   ;
   
 fragment DIGIT
   : '0'..'9'
+  ;
+  
+fragment HEXDIGIT
+  : '0'..'9' | 'a'..'f'
   ;
   
 fragment ALPHA

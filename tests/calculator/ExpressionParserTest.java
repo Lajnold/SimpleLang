@@ -109,7 +109,7 @@ public class ExpressionParserTest {
     }
 
     @Test
-    public void functionCallWithExpressionArgument() {
+    public void functionCallWithExpressionAsArgument() {
         // Same as sin(50)
         testExpression("sin(30 - 10 * 2 + 80 / 2)", -0.262, 0.001);
     }
@@ -150,8 +150,43 @@ public class ExpressionParserTest {
         testExpression("1 + x", 7.0, EXACT_DELTA);
     }
     
+    @Test
+    public void hexadecimalNumberWithPositiveExp() {
+        // 10.5 + 746
+        testExpression("0x1.5p3 + 0x2ea", 756.5, EXACT_DELTA);
+        testExpression("0x1.5p+3 + 0x2ea", 756.5, EXACT_DELTA);
+    }
+
+    @Test
+    public void hexadecimalNumberWithNegativeExp() {
+        // 0.328125 + 746
+        testExpression("0x1.5p-2 + 0x2ea", 746.328, 0.001);
+    }
+
+    @Test
+    public void octalNumbers() {
+        // 7 - 72
+        testExpression("07 - 0110", -65.0, EXACT_DELTA);
+    }
+
+    @Test
+    public void scientificNotation() {
+        // 1500 + 0.03 + 112
+        testExpression("1.5e3 + 3e-2 + 11.2e+1", 1612.03, 0.01);
+    }
+    
     
     // Failure tests
+    
+    @Test(expected = ExpressionException.class)
+    public void throwsOnInvalidSpacingInHexNumber() {
+        parser.parse("0x 1");
+    }
+    
+    @Test(expected = ExpressionException.class)
+    public void throwsOnBogusCharacter() {
+        parser.parse(":");
+    }
     
     @Test(expected = ExpressionException.class)
     public void throwsOnEmptyRHSInAssignment() {
@@ -186,6 +221,11 @@ public class ExpressionParserTest {
     @Test(expected = ExpressionException.class)
     public void throwsOnMissingOperand() {
         parser.parse("2 +");
+    }
+
+    @Test(expected = ExpressionException.class)
+    public void throwsOnMissingOperator() {
+        parser.parse("2 2");
     }
     
     

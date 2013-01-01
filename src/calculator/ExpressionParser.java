@@ -145,10 +145,18 @@ public class ExpressionParser {
     }
 
     private Double getNodeValueNumber(Tree node) {
+        // First try parsing as an integer, to catch octal integers before the
+        // floating-point parser parses them as non-octal.
+        // If that fails, parse as a floating-point number.
         try {
-            return Double.parseDouble(node.getText());
+            return Long.decode(node.getText()).doubleValue();
         } catch (NumberFormatException e) {
-            throw new ExpressionException("Invalid number: " + node.getText(), e);
+            try {
+                return Double.valueOf(node.getText());
+            } catch (NumberFormatException e2) {
+                throw new ExpressionException(
+                        "Invalid number: " + node.getText(), e2);
+            }
         }
     }
 
