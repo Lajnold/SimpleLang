@@ -46,13 +46,17 @@ addSubExpr
   ;
   
 mulDivExpr
-  : atom^ ((TIMES | DIVIDED_BY) atom)*
+  : unary^ ((TIMES | DIVIDED_BY) unary)*
+  ;
+  
+unary
+  : PLUS? atom  ->  atom
+  | MINUS atom  ->  ^(NUMBER["-1"] TIMES atom)
   ;
   
 atom
-  : NUMBER                           ->  ^(PLUS NUMBER)
-  | (sign=MINUS | sign=PLUS) NUMBER  ->  ^($sign NUMBER)
-  | LPAREN addSubExpr RPAREN         ->  addSubExpr
+  : NUMBER                    ->  NUMBER
+  | LPAREN addSubExpr RPAREN  ->  addSubExpr
   ;
 
 NUMBER

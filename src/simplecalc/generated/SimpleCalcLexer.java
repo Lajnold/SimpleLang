@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g 2012-12-31 20:21:10
+// $ANTLR 3.4 /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g 2013-01-01 12:23:21
 
   package simplecalc.generated;
 
@@ -191,10 +191,10 @@ public class SimpleCalcLexer extends Lexer {
         try {
             int _type = NUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:3: ( ( DIGIT )+ ( POINT ( DIGIT )+ )? )
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:5: ( DIGIT )+ ( POINT ( DIGIT )+ )?
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:3: ( ( DIGIT )+ ( POINT ( DIGIT )+ )? )
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:5: ( DIGIT )+ ( POINT ( DIGIT )+ )?
             {
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:5: ( DIGIT )+
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:5: ( DIGIT )+
             int cnt1=0;
             loop1:
             do {
@@ -233,7 +233,7 @@ public class SimpleCalcLexer extends Lexer {
             } while (true);
 
 
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:14: ( POINT ( DIGIT )+ )?
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:14: ( POINT ( DIGIT )+ )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -242,12 +242,12 @@ public class SimpleCalcLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:15: POINT ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:15: POINT ( DIGIT )+
                     {
                     mPOINT(); 
 
 
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:21: ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:21: ( DIGIT )+
                     int cnt2=0;
                     loop2:
                     do {
@@ -306,7 +306,7 @@ public class SimpleCalcLexer extends Lexer {
     // $ANTLR start "DIGIT"
     public final void mDIGIT() throws RecognitionException {
         try {
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:3: ( '0' .. '9' )
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:67:3: ( '0' .. '9' )
             // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -334,10 +334,10 @@ public class SimpleCalcLexer extends Lexer {
         try {
             int _type = SPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:68:3: ( ( ' ' | '\\t' )+ )
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:68:5: ( ' ' | '\\t' )+
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:72:3: ( ( ' ' | '\\t' )+ )
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:72:5: ( ' ' | '\\t' )+
             {
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:68:5: ( ' ' | '\\t' )+
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:72:5: ( ' ' | '\\t' )+
             int cnt4=0;
             loop4:
             do {
@@ -394,8 +394,8 @@ public class SimpleCalcLexer extends Lexer {
         try {
             int _type = INVALID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:73:3: ( . )
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:73:5: .
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:77:3: ( . )
+            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:77:5: .
             {
             matchAny(); 
 

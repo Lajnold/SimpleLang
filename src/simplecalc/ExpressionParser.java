@@ -32,10 +32,9 @@ public class ExpressionParser {
     }
     
     private static double calculateTree(Tree tree) {
-        int sign = (tree.getType() == SimpleCalcParser.MINUS) ? -1 : 1;
-        double value = sign * Double.parseDouble(tree.getChild(0).getText());
+        double value = Double.parseDouble(tree.getText());
         
-        for (int i = 1; i < tree.getChildCount(); i += 2) {
+        for (int i = 0; i < tree.getChildCount(); i += 2) {
             Tree opTree = tree.getChild(i);
             Tree valueTree = tree.getChild(i + 1);
             double childValue = calculateTree(valueTree);

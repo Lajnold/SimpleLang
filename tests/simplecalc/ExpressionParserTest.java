@@ -82,6 +82,11 @@ public class ExpressionParserTest {
         // (2+2) - (5 * (4 + -2)) = 4 - 10
         testExpression("2+2-  5 *(   4 +-2)", -6.0, EXACT_DELTA);
     }
+
+    @Test
+    public void negativeParantheses() {
+        testExpression("2 + -(2 - 3)", 3.0, EXACT_DELTA);
+    }
     
     @Test(expected = ExpressionException.class)
     public void throwsOnExtraPlusOperator() {
