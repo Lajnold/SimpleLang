@@ -1,4 +1,4 @@
-grammar SimpleCalc;
+grammar Calculator;
 
 options {
   output = AST;
@@ -22,10 +22,10 @@ tokens {
 }
 
 @lexer::header {
-  package simplecalc.generated;
+  package calculator.generated;
 }
 @parser::header {
-  package simplecalc.generated;
+  package calculator.generated;
 }
 
 @rulecatch {

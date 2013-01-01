@@ -1,4 +1,4 @@
-package simplecalc;
+package calculator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,8 +8,9 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
 
-import simplecalc.generated.SimpleCalcLexer;
-import simplecalc.generated.SimpleCalcParser;
+import calculator.generated.CalculatorLexer;
+import calculator.generated.CalculatorParser;
+
 
 
 public class ExpressionParser {
@@ -32,12 +33,12 @@ public class ExpressionParser {
 
     public Double parse(String expr)
             throws ExpressionException {
-        SimpleCalcLexer lexer = new SimpleCalcLexer(new ANTLRStringStream(expr));
+        CalculatorLexer lexer = new CalculatorLexer(new ANTLRStringStream(expr));
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        SimpleCalcParser parser = new SimpleCalcParser(tokenStream);
+        CalculatorParser parser = new CalculatorParser(tokenStream);
         
         try {
-            SimpleCalcParser.parse_return parseReturn = parser.parse();
+            CalculatorParser.parse_return parseReturn = parser.parse();
             Tree tree = (Tree) parseReturn.getTree();
             Double retVal = null;
             
@@ -45,7 +46,7 @@ public class ExpressionParser {
                 printTree(tree);
             }
             
-            if (tree.getType() == SimpleCalcParser.T_ASSIGN) {
+            if (tree.getType() == CalculatorParser.T_ASSIGN) {
                 handleAssignment(tree);
             } else {
                 retVal = calculateTree(tree);
@@ -74,16 +75,16 @@ public class ExpressionParser {
             Double childValue = calculateTree(valueTree);
 
             switch (opTree.getType()) {
-                case SimpleCalcParser.PLUS:
+                case CalculatorParser.PLUS:
                     value += childValue;
                     break;
-                case SimpleCalcParser.MINUS:
+                case CalculatorParser.MINUS:
                     value -= childValue;
                     break;
-                case SimpleCalcParser.TIMES:
+                case CalculatorParser.TIMES:
                     value *= childValue;
                     break;
-                case SimpleCalcParser.DIVIDED_BY:
+                case CalculatorParser.DIVIDED_BY:
                     value /= childValue;
                     break;
             }
@@ -96,14 +97,14 @@ public class ExpressionParser {
         int nArgs = 0;
         
         switch (tree.getType()) {
-            case SimpleCalcParser.T_CALL:
+            case CalculatorParser.T_CALL:
                 nArgs = 1;
                 while (nArgs < tree.getChildCount()
-                        && tree.getChild(nArgs).getType() == SimpleCalcParser.T_ARG) {
+                        && tree.getChild(nArgs).getType() == CalculatorParser.T_ARG) {
                     nArgs += 2;
                 }
                 break;
-            case SimpleCalcParser.T_VAR:
+            case CalculatorParser.T_VAR:
                 nArgs = 1;
                 break;
         }
@@ -115,13 +116,13 @@ public class ExpressionParser {
         Double value;
         
         switch (node.getType()) {
-            case SimpleCalcParser.NUMBER:
+            case CalculatorParser.NUMBER:
                 value = getNodeValueNumber(node);
                 break;
-            case SimpleCalcParser.T_CALL:
+            case CalculatorParser.T_CALL:
                 value = getNodeValueCall(node);
                 break;
-            case SimpleCalcParser.T_VAR:
+            case CalculatorParser.T_VAR:
                 value = getNodeValueVar(node);
                 break;
             default:

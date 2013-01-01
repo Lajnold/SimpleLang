@@ -1,8 +1,10 @@
-package simplecalc;
+package calculator;
 
 import org.junit.*;
 
-import simplecalc.ExpressionParser;
+import calculator.ExpressionException;
+import calculator.ExpressionParser;
+
 import static org.junit.Assert.*;
 
 public class ExpressionParserTest {

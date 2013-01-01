@@ -1,6 +1,6 @@
-// $ANTLR 3.4 /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g 2013-01-01 16:02:49
+// $ANTLR 3.4 /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g 2013-01-01 16:29:49
 
-  package simplecalc.generated;
+  package calculator.generated;
 
 
 import org.antlr.runtime.*;
@@ -12,7 +12,7 @@ import org.antlr.runtime.tree.*;
 
 
 @SuppressWarnings({"all", "warnings", "unchecked"})
-public class SimpleCalcParser extends Parser {
+public class CalculatorParser extends Parser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ALPHA", "ASSIGN", "DIGIT", "DIVIDED_BY", "ID", "LPAREN", "MINUS", "NUMBER", "PLUS", "POINT", "RPAREN", "TIMES", "T_ARG", "T_ASSIGN", "T_CALL", "T_VAR", "WHITESPACE"
     };
@@ -44,10 +44,10 @@ public class SimpleCalcParser extends Parser {
     // delegators
 
 
-    public SimpleCalcParser(TokenStream input) {
+    public CalculatorParser(TokenStream input) {
         this(input, new RecognizerSharedState());
     }
-    public SimpleCalcParser(TokenStream input, RecognizerSharedState state) {
+    public CalculatorParser(TokenStream input, RecognizerSharedState state) {
         super(input, state);
     }
 
@@ -59,8 +59,8 @@ public void setTreeAdaptor(TreeAdaptor adaptor) {
 public TreeAdaptor getTreeAdaptor() {
     return adaptor;
 }
-    public String[] getTokenNames() { return SimpleCalcParser.tokenNames; }
-    public String getGrammarFileName() { return "/home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g"; }
+    public String[] getTokenNames() { return CalculatorParser.tokenNames; }
+    public String getGrammarFileName() { return "/home/lajnold/workspace/SimpleCalc/antlr/Calculator.g"; }
 
 
      protected Object recoverFromMismatchedToken(IntStream input,
@@ -78,9 +78,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "parse"
-    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:49:8: public parse : ( expression ^ EOF !| assignment ^ EOF !);
-    public final SimpleCalcParser.parse_return parse() throws RecognitionException {
-        SimpleCalcParser.parse_return retval = new SimpleCalcParser.parse_return();
+    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:49:8: public parse : ( expression ^ EOF !| assignment ^ EOF !);
+    public final CalculatorParser.parse_return parse() throws RecognitionException {
+        CalculatorParser.parse_return retval = new CalculatorParser.parse_return();
         retval.start = input.LT(1);
 
 
@@ -88,16 +88,16 @@ public TreeAdaptor getTreeAdaptor() {
 
         Token EOF2=null;
         Token EOF4=null;
-        SimpleCalcParser.expression_return expression1 =null;
+        CalculatorParser.expression_return expression1 =null;
 
-        SimpleCalcParser.assignment_return assignment3 =null;
+        CalculatorParser.assignment_return assignment3 =null;
 
 
         Object EOF2_tree=null;
         Object EOF4_tree=null;
 
         try {
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:50:3: ( expression ^ EOF !| assignment ^ EOF !)
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:50:3: ( expression ^ EOF !| assignment ^ EOF !)
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -130,7 +130,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt1) {
                 case 1 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:50:5: expression ^ EOF !
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:50:5: expression ^ EOF !
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -147,7 +147,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:51:5: assignment ^ EOF !
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:51:5: assignment ^ EOF !
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -192,25 +192,25 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expression"
-    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:54:1: expression : a= mulDivExpression ^ ( ( PLUS | MINUS ) mulDivExpression )* ;
-    public final SimpleCalcParser.expression_return expression() throws RecognitionException {
-        SimpleCalcParser.expression_return retval = new SimpleCalcParser.expression_return();
+    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:54:1: expression : a= mulDivExpression ^ ( ( PLUS | MINUS ) mulDivExpression )* ;
+    public final CalculatorParser.expression_return expression() throws RecognitionException {
+        CalculatorParser.expression_return retval = new CalculatorParser.expression_return();
         retval.start = input.LT(1);
 
 
         Object root_0 = null;
 
         Token set5=null;
-        SimpleCalcParser.mulDivExpression_return a =null;
+        CalculatorParser.mulDivExpression_return a =null;
 
-        SimpleCalcParser.mulDivExpression_return mulDivExpression6 =null;
+        CalculatorParser.mulDivExpression_return mulDivExpression6 =null;
 
 
         Object set5_tree=null;
 
         try {
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:55:3: (a= mulDivExpression ^ ( ( PLUS | MINUS ) mulDivExpression )* )
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:55:5: a= mulDivExpression ^ ( ( PLUS | MINUS ) mulDivExpression )*
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:55:3: (a= mulDivExpression ^ ( ( PLUS | MINUS ) mulDivExpression )* )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:55:5: a= mulDivExpression ^ ( ( PLUS | MINUS ) mulDivExpression )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -222,7 +222,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             root_0 = (Object)adaptor.becomeRoot(a.getTree(), root_0);
 
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:55:25: ( ( PLUS | MINUS ) mulDivExpression )*
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:55:25: ( ( PLUS | MINUS ) mulDivExpression )*
             loop2:
             do {
                 int alt2=2;
@@ -235,7 +235,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt2) {
             	case 1 :
-            	    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:55:26: ( PLUS | MINUS ) mulDivExpression
+            	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:55:26: ( PLUS | MINUS ) mulDivExpression
             	    {
             	    set5=(Token)input.LT(1);
 
@@ -297,25 +297,25 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "mulDivExpression"
-    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:58:1: mulDivExpression : unary ^ ( ( TIMES | DIVIDED_BY ) unary )* ;
-    public final SimpleCalcParser.mulDivExpression_return mulDivExpression() throws RecognitionException {
-        SimpleCalcParser.mulDivExpression_return retval = new SimpleCalcParser.mulDivExpression_return();
+    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:58:1: mulDivExpression : unary ^ ( ( TIMES | DIVIDED_BY ) unary )* ;
+    public final CalculatorParser.mulDivExpression_return mulDivExpression() throws RecognitionException {
+        CalculatorParser.mulDivExpression_return retval = new CalculatorParser.mulDivExpression_return();
         retval.start = input.LT(1);
 
 
         Object root_0 = null;
 
         Token set8=null;
-        SimpleCalcParser.unary_return unary7 =null;
+        CalculatorParser.unary_return unary7 =null;
 
-        SimpleCalcParser.unary_return unary9 =null;
+        CalculatorParser.unary_return unary9 =null;
 
 
         Object set8_tree=null;
 
         try {
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:3: ( unary ^ ( ( TIMES | DIVIDED_BY ) unary )* )
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:5: unary ^ ( ( TIMES | DIVIDED_BY ) unary )*
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:59:3: ( unary ^ ( ( TIMES | DIVIDED_BY ) unary )* )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:59:5: unary ^ ( ( TIMES | DIVIDED_BY ) unary )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -327,7 +327,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             root_0 = (Object)adaptor.becomeRoot(unary7.getTree(), root_0);
 
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:12: ( ( TIMES | DIVIDED_BY ) unary )*
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:59:12: ( ( TIMES | DIVIDED_BY ) unary )*
             loop3:
             do {
                 int alt3=2;
@@ -340,7 +340,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt3) {
             	case 1 :
-            	    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:59:13: ( TIMES | DIVIDED_BY ) unary
+            	    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:59:13: ( TIMES | DIVIDED_BY ) unary
             	    {
             	    set8=(Token)input.LT(1);
 
@@ -402,9 +402,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "assignment"
-    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:62:1: assignment : ID ASSIGN expression -> ^( T_ASSIGN ID expression ) ;
-    public final SimpleCalcParser.assignment_return assignment() throws RecognitionException {
-        SimpleCalcParser.assignment_return retval = new SimpleCalcParser.assignment_return();
+    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:62:1: assignment : ID ASSIGN expression -> ^( T_ASSIGN ID expression ) ;
+    public final CalculatorParser.assignment_return assignment() throws RecognitionException {
+        CalculatorParser.assignment_return retval = new CalculatorParser.assignment_return();
         retval.start = input.LT(1);
 
 
@@ -412,7 +412,7 @@ public TreeAdaptor getTreeAdaptor() {
 
         Token ID10=null;
         Token ASSIGN11=null;
-        SimpleCalcParser.expression_return expression12 =null;
+        CalculatorParser.expression_return expression12 =null;
 
 
         Object ID10_tree=null;
@@ -421,8 +421,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_ASSIGN=new RewriteRuleTokenStream(adaptor,"token ASSIGN");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         try {
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:3: ( ID ASSIGN expression -> ^( T_ASSIGN ID expression ) )
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:5: ID ASSIGN expression
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:63:3: ( ID ASSIGN expression -> ^( T_ASSIGN ID expression ) )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:63:5: ID ASSIGN expression
             {
             ID10=(Token)match(input,ID,FOLLOW_ID_in_assignment252);  
             stream_ID.add(ID10);
@@ -452,7 +452,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
             // 63:27: -> ^( T_ASSIGN ID expression )
             {
-                // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:63:31: ^( T_ASSIGN ID expression )
+                // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:63:31: ^( T_ASSIGN ID expression )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
@@ -502,9 +502,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "unary"
-    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:66:1: unary : ( ( PLUS )? atom -> atom | MINUS atom -> ^( NUMBER[\"-1\"] TIMES atom ) );
-    public final SimpleCalcParser.unary_return unary() throws RecognitionException {
-        SimpleCalcParser.unary_return retval = new SimpleCalcParser.unary_return();
+    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:66:1: unary : ( ( PLUS )? atom -> atom | MINUS atom -> ^( NUMBER[\"-1\"] TIMES atom ) );
+    public final CalculatorParser.unary_return unary() throws RecognitionException {
+        CalculatorParser.unary_return retval = new CalculatorParser.unary_return();
         retval.start = input.LT(1);
 
 
@@ -512,9 +512,9 @@ public TreeAdaptor getTreeAdaptor() {
 
         Token PLUS13=null;
         Token MINUS15=null;
-        SimpleCalcParser.atom_return atom14 =null;
+        CalculatorParser.atom_return atom14 =null;
 
-        SimpleCalcParser.atom_return atom16 =null;
+        CalculatorParser.atom_return atom16 =null;
 
 
         Object PLUS13_tree=null;
@@ -523,7 +523,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_MINUS=new RewriteRuleTokenStream(adaptor,"token MINUS");
         RewriteRuleSubtreeStream stream_atom=new RewriteRuleSubtreeStream(adaptor,"rule atom");
         try {
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:67:3: ( ( PLUS )? atom -> atom | MINUS atom -> ^( NUMBER[\"-1\"] TIMES atom ) )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:67:3: ( ( PLUS )? atom -> atom | MINUS atom -> ^( NUMBER[\"-1\"] TIMES atom ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -542,9 +542,9 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt5) {
                 case 1 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:67:5: ( PLUS )? atom
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:67:5: ( PLUS )? atom
                     {
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:67:5: ( PLUS )?
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:67:5: ( PLUS )?
                     int alt4=2;
                     int LA4_0 = input.LA(1);
 
@@ -553,7 +553,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     switch (alt4) {
                         case 1 :
-                            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:67:5: PLUS
+                            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:67:5: PLUS
                             {
                             PLUS13=(Token)match(input,PLUS,FOLLOW_PLUS_in_unary283);  
                             stream_PLUS.add(PLUS13);
@@ -595,7 +595,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:68:5: MINUS atom
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:68:5: MINUS atom
                     {
                     MINUS15=(Token)match(input,MINUS,FOLLOW_MINUS_in_unary298);  
                     stream_MINUS.add(MINUS15);
@@ -621,7 +621,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
                     // 68:17: -> ^( NUMBER[\"-1\"] TIMES atom )
                     {
-                        // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:68:21: ^( NUMBER[\"-1\"] TIMES atom )
+                        // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:68:21: ^( NUMBER[\"-1\"] TIMES atom )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -673,9 +673,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "atom"
-    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:71:1: atom : ( NUMBER -> NUMBER | ID -> ^( T_VAR ID ) | LPAREN expression RPAREN -> expression | ID LPAREN expression RPAREN -> ^( T_CALL ID T_ARG expression ) );
-    public final SimpleCalcParser.atom_return atom() throws RecognitionException {
-        SimpleCalcParser.atom_return retval = new SimpleCalcParser.atom_return();
+    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:71:1: atom : ( NUMBER -> NUMBER | ID -> ^( T_VAR ID ) | LPAREN expression RPAREN -> expression | ID LPAREN expression RPAREN -> ^( T_CALL ID T_ARG expression ) );
+    public final CalculatorParser.atom_return atom() throws RecognitionException {
+        CalculatorParser.atom_return retval = new CalculatorParser.atom_return();
         retval.start = input.LT(1);
 
 
@@ -688,9 +688,9 @@ public TreeAdaptor getTreeAdaptor() {
         Token ID22=null;
         Token LPAREN23=null;
         Token RPAREN25=null;
-        SimpleCalcParser.expression_return expression20 =null;
+        CalculatorParser.expression_return expression20 =null;
 
-        SimpleCalcParser.expression_return expression24 =null;
+        CalculatorParser.expression_return expression24 =null;
 
 
         Object NUMBER17_tree=null;
@@ -706,7 +706,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_NUMBER=new RewriteRuleTokenStream(adaptor,"token NUMBER");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         try {
-            // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:72:3: ( NUMBER -> NUMBER | ID -> ^( T_VAR ID ) | LPAREN expression RPAREN -> expression | ID LPAREN expression RPAREN -> ^( T_CALL ID T_ARG expression ) )
+            // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:72:3: ( NUMBER -> NUMBER | ID -> ^( T_VAR ID ) | LPAREN expression RPAREN -> expression | ID LPAREN expression RPAREN -> ^( T_CALL ID T_ARG expression ) )
             int alt6=4;
             switch ( input.LA(1) ) {
             case NUMBER:
@@ -748,7 +748,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt6) {
                 case 1 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:72:5: NUMBER
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:72:5: NUMBER
                     {
                     NUMBER17=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_atom328);  
                     stream_NUMBER.add(NUMBER17);
@@ -779,7 +779,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:73:5: ID
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:73:5: ID
                     {
                     ID18=(Token)match(input,ID,FOLLOW_ID_in_atom361);  
                     stream_ID.add(ID18);
@@ -798,7 +798,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
                     // 73:34: -> ^( T_VAR ID )
                     {
-                        // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:73:38: ^( T_VAR ID )
+                        // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:73:38: ^( T_VAR ID )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -820,7 +820,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:74:5: LPAREN expression RPAREN
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:74:5: LPAREN expression RPAREN
                     {
                     LPAREN19=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_atom402);  
                     stream_LPAREN.add(LPAREN19);
@@ -860,7 +860,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:75:5: ID LPAREN expression RPAREN
+                    // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:75:5: ID LPAREN expression RPAREN
                     {
                     ID22=(Token)match(input,ID,FOLLOW_ID_in_atom421);  
                     stream_ID.add(ID22);
@@ -894,7 +894,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
                     // 75:34: -> ^( T_CALL ID T_ARG expression )
                     {
-                        // /home/lajnold/workspace/SimpleCalc/antlr/SimpleCalc.g:75:38: ^( T_CALL ID T_ARG expression )
+                        // /home/lajnold/workspace/SimpleCalc/antlr/Calculator.g:75:38: ^( T_CALL ID T_ARG expression )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
