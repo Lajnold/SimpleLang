@@ -7,6 +7,14 @@ import static org.junit.Assert.*;
 
 public class ExpressionParserTest {
     
+    ExpressionParser parser;
+    
+    @Before
+    public void setup() {
+        parser = new ExpressionParser();
+        parser.printTreeOnParse(false);
+    }
+    
     @Test
     public void complex() {
         testExpression("3 * (-2 + 4) / 4 - -5 * 2",  11.5, EXACT_DELTA);
@@ -88,33 +96,101 @@ public class ExpressionParserTest {
         testExpression("2 + -(2 - 3)", 3.0, EXACT_DELTA);
     }
     
+    @Test
+    public void functionCallSin() {
+        testExpression("sin(50)", -0.262, 0.001);
+    }
+
+    @Test
+    public void functionCallCos() {
+        testExpression("cos(50)", 0.964, 0.001);
+    }
+
+    @Test
+    public void functionCallWithExpressionArgument() {
+        // Same as sin(50)
+        testExpression("sin(30 - 10 * 2 + 80 / 2)", -0.262, 0.001);
+    }
+    
+    @Test
+    public void functionCallInExpression() {
+        testExpression("5 + -sin(50) + sin(20)", 6.175, 0.001);
+    }
+
+    @Test
+    public void variableRefPi() {
+        testExpression("pi", 3.141, 0.001);
+    }
+
+    @Test
+    public void variableRefE() {
+        testExpression("e", 2.718, 0.001);
+    }
+
+    @Test
+    public void variableRefInBeginningOfExpr() {
+        testExpression("e + 2", 4.718, 0.001);
+    }
+
+    @Test
+    public void piInFunctionCall() {
+        testExpression("sin(0.5 * pi)", 1.0, EXACT_DELTA);
+    }
+
+    @Test
+    public void functionCallInBeginningOfExpr() {
+        testExpression("sin(50) + 2", 1.738, 0.001);
+    }
+    
+    @Test
+    public void variableAssignment() {
+        parser.parse("x = 2 * 3");
+        testExpression("1 + x", 7.0, EXACT_DELTA);
+    }
+    
+    
+    // Failure tests
+    
+    @Test(expected = ExpressionException.class)
+    public void throwsOnEmptyRHSInAssignment() {
+        parser.parse("x =");
+    }
+    
+    @Test(expected = ExpressionException.class)
+    public void throwsOnUnknownVariable() {
+        parser.parse("1 + u");
+    }
+
     @Test(expected = ExpressionException.class)
     public void throwsOnExtraPlusOperator() {
-        testExpression("2 +++ 3", 0, EXACT_DELTA);
+        parser.parse("2 +++ 3");
     }
 
     @Test(expected = ExpressionException.class)
     public void throwsOnExtraMinusOperator() {
-        testExpression("2 + --3", 0, EXACT_DELTA);
+        parser.parse("2 + --3");
     }
 
     @Test(expected = ExpressionException.class)
     public void throwsOnMissingRightParanthesis() {
-        testExpression("(2 + 4", 0, EXACT_DELTA);
+        parser.parse("(2 + 4");
     }
 
     @Test(expected = ExpressionException.class)
     public void throwsOnMissingLeftParanthesis() {
-        testExpression("2 + 4)", 0, EXACT_DELTA);
+        parser.parse("2 + 4)");
     }
 
     @Test(expected = ExpressionException.class)
     public void throwsOnMissingOperand() {
-        testExpression("2 +", 0, EXACT_DELTA);
+        parser.parse("2 +");
     }
     
+    
+    // Helpers 
+    
     private void testExpression(String expr, double expected, double delta) {
-        double res = ExpressionParser.parseExpression(expr);
+        double res = parser.parse(expr);
         assertEquals(expected, res, delta);
     }
     

@@ -12,7 +12,13 @@ tokens {
   POINT = '.';
   LPAREN = '(';
   RPAREN = ')';
-  X;
+  ASSIGN = '=';
+  
+  /* Special node types */
+  T_ARG;
+  T_CALL;
+  T_VAR;
+  T_ASSIGN;
 }
 
 @lexer::header {
@@ -37,16 +43,24 @@ tokens {
   }
 }
 
+
+/* Parser rulse */
+
 public parse
-  : addSubExpr^ EOF!
+  : expression^ EOF!
+  | assignment^ EOF!
   ;
 
-addSubExpr
-  : a=mulDivExpr^ ((PLUS | MINUS) mulDivExpr)*
+expression
+  : a=mulDivExpression^ ((PLUS | MINUS) mulDivExpression)*
   ;
   
-mulDivExpr
+mulDivExpression
   : unary^ ((TIMES | DIVIDED_BY) unary)*
+  ;
+  
+assignment
+  : ID ASSIGN expression  ->  ^(T_ASSIGN ID expression)
   ;
   
 unary
@@ -55,8 +69,17 @@ unary
   ;
   
 atom
-  : NUMBER                    ->  NUMBER
-  | LPAREN addSubExpr RPAREN  ->  addSubExpr
+  : NUMBER                       ->  NUMBER
+  | ID                           ->  ^(T_VAR ID)
+  | LPAREN expression RPAREN     ->  expression
+  | ID LPAREN expression RPAREN  ->  ^(T_CALL ID T_ARG expression)
+  ;
+  
+  
+/* Lexer rules */
+  
+ID
+  : (ALPHA | '_') (ALPHA | DIGIT | '_')*
   ;
 
 NUMBER
@@ -67,11 +90,11 @@ fragment DIGIT
   : '0'..'9'
   ;
   
-/* Ignore whitespace characters. */
-SPACE
-  : (' ' | '\t')+ { skip(); }
+fragment ALPHA
+  : 'a'..'z' | 'A'..'Z'
   ;
   
-/* Catch other characters as invalid. */
-INVALID
-  : .;
+/* Ignore whitespace characters. */
+WHITESPACE
+  : (' ' | '\t')+  { skip(); }
+  ;
