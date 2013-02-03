@@ -15,7 +15,7 @@ import calculator.generated.CalculatorParser;
 
 public class ExpressionParser {
     
-    private Map<String, Double> variables = new HashMap<>();
+    private Map<String, BigNumber> variables = new HashMap<>();
     private boolean doPrintTreeOnParse = false;
     
     public ExpressionParser() {
@@ -23,15 +23,15 @@ public class ExpressionParser {
     }
 
     private void addBuiltinVariables() {
-        variables.put("pi", Math.PI);
-        variables.put("e", Math.E);
+        variables.put("pi", new BigNumber(Math.PI));
+        variables.put("e", new BigNumber(Math.E));
     }
     
     public void printTreeOnParse(boolean doPrint) {
         doPrintTreeOnParse = doPrint;
     }
 
-    public Double parse(String expr)
+    public BigNumber parse(String expr)
             throws ExpressionException {
         CalculatorLexer lexer = new CalculatorLexer(new ANTLRStringStream(expr));
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
@@ -40,7 +40,7 @@ public class ExpressionParser {
         try {
             CalculatorParser.parse_return parseReturn = parser.parse();
             Tree tree = (Tree) parseReturn.getTree();
-            Double retVal = null;
+            BigNumber retVal = null;
             
             if (doPrintTreeOnParse) {
                 printTree(tree);
@@ -60,32 +60,32 @@ public class ExpressionParser {
     
     private void handleAssignment(Tree tree) {
         String varName = tree.getChild(0).getText();
-        Double value = calculateTree(tree.getChild(1));
+        BigNumber value = calculateTree(tree.getChild(1));
         
         variables.put(varName, value);
     }
 
-    private Double calculateTree(Tree tree) {
-        Double value = getNodeValue(tree);
+    private BigNumber calculateTree(Tree tree) {
+        BigNumber value = getNodeValue(tree);
         int skipNodes = getNumberOfSpecialNodeArgs(tree);
         
         for (int i = skipNodes; i < tree.getChildCount(); i += 2) {
             Tree opTree = tree.getChild(i);
             Tree valueTree = tree.getChild(i + 1);
-            Double childValue = calculateTree(valueTree);
+            BigNumber childValue = calculateTree(valueTree);
 
             switch (opTree.getType()) {
                 case CalculatorParser.PLUS:
-                    value += childValue;
+                    value = value.add(childValue);
                     break;
                 case CalculatorParser.MINUS:
-                    value -= childValue;
+                    value = value.subtract(childValue);
                     break;
                 case CalculatorParser.TIMES:
-                    value *= childValue;
+                    value = value.multiply(childValue);
                     break;
                 case CalculatorParser.DIVIDED_BY:
-                    value /= childValue;
+                    value = value.divide(childValue);
                     break;
             }
         }
@@ -112,8 +112,8 @@ public class ExpressionParser {
         return nArgs;
     }
 
-    private Double getNodeValue(Tree node) {
-        Double value;
+    private BigNumber getNodeValue(Tree node) {
+        BigNumber value;
         
         switch (node.getType()) {
             case CalculatorParser.NUMBER:
@@ -133,9 +133,9 @@ public class ExpressionParser {
         return value;
     }
 
-    private Double getNodeValueVar(Tree node) {
+    private BigNumber getNodeValueVar(Tree node) {
         String varName = node.getChild(0).getText();
-        Double value = variables.get(varName);
+        BigNumber value = variables.get(varName);
         
         if (value == null) {
             throw new ExpressionException("No such variable: " + varName);
@@ -144,34 +144,26 @@ public class ExpressionParser {
         return value;
     }
 
-    private Double getNodeValueNumber(Tree node) {
-        // First try parsing as an integer, to catch octal integers before the
-        // floating-point parser parses them as non-octal.
-        // If that fails, parse as a floating-point number.
+    private BigNumber getNodeValueNumber(Tree node) {
         try {
-            return Long.decode(node.getText()).doubleValue();
-        } catch (NumberFormatException e) {
-            try {
-                return Double.valueOf(node.getText());
-            } catch (NumberFormatException e2) {
-                throw new ExpressionException(
-                        "Invalid number: " + node.getText(), e2);
-            }
+            return new BigNumber(node.getText());
+        } catch (NumberFormatException e2) {
+            throw new ExpressionException("Invalid number: " + node.getText(), e2);
         }
     }
 
-    private Double getNodeValueCall(Tree node) {
-        Double value;
+    private BigNumber getNodeValueCall(Tree node) {
+        BigNumber value;
         String functionName = node.getChild(0).getText();
         Tree argumentTree = node.getChild(2);
-        Double argumentValue = calculateTree(argumentTree);
+        BigNumber argumentValue = calculateTree(argumentTree);
         
         switch (functionName) {
             case "sin":
-                value = Math.sin(argumentValue);
+                value = new BigNumber(Math.sin(argumentValue.doubleValue()));
                 break;
             case "cos":
-                value = Math.cos(argumentValue);
+                value = new BigNumber(Math.cos(argumentValue.doubleValue()));
                 break;
             default:
                 throw new ExpressionException(
