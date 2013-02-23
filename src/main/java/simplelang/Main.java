@@ -1,6 +1,6 @@
-package calculator;
+package simplelang;
 
-import calculator.parser.AntlrParser;
+import simplelang.parser.AntlrParser;
 
 public class Main {
     

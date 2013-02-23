@@ -1,10 +1,12 @@
-package calculator;
+package simplelang;
 
 import org.junit.*;
 
-import calculator.ExpressionException;
-import calculator.ExpressionParser;
-import calculator.parser.AntlrParser;
+import simplelang.BigNumber;
+import simplelang.ExpressionException;
+import simplelang.ExpressionParser;
+import simplelang.parser.AntlrParser;
+
 
 import static org.junit.Assert.*;
 

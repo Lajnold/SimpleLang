@@ -1,4 +1,4 @@
-package calculator.parser.ast;
+package simplelang.parser.ast;
 
 public class BinOpAST extends ValueAST {
     

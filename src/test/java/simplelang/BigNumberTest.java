@@ -1,6 +1,8 @@
-package calculator;
+package simplelang;
 
 import org.junit.*;
+
+import simplelang.BigNumber;
 import static org.junit.Assert.*;
 
 public class BigNumberTest {

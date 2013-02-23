@@ -1,4 +1,4 @@
-package calculator.parser.ast;
+package simplelang.parser.ast;
 
 /**
  * Base class for AST types whose instances represent a value,

@@ -1,4 +1,4 @@
-package parser;
+package simplelang.parser;
 
 import static org.junit.Assert.*;
 
@@ -8,15 +8,16 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import calculator.parser.Parser;
-import calculator.parser.SyntaxException;
-import calculator.parser.ast.AST;
-import calculator.parser.ast.BinOpAST;
-import calculator.parser.ast.FunctionCallAST;
-import calculator.parser.ast.NumberAST;
-import calculator.parser.ast.ValueAST;
-import calculator.parser.ast.VariableAssignmentAST;
-import calculator.parser.ast.VariableReferenceAST;
+import simplelang.parser.Parser;
+import simplelang.parser.SyntaxException;
+import simplelang.parser.ast.AST;
+import simplelang.parser.ast.BinOpAST;
+import simplelang.parser.ast.FunctionCallAST;
+import simplelang.parser.ast.NumberAST;
+import simplelang.parser.ast.ValueAST;
+import simplelang.parser.ast.VariableAssignmentAST;
+import simplelang.parser.ast.VariableReferenceAST;
+
 
 /**
  * Base class for parser tests. This class defined a set of tests that apply

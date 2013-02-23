@@ -1,4 +1,4 @@
-package calculator.parser;
+package simplelang.parser;
 
 public class SyntaxException extends Exception {
     

@@ -1,8 +1,9 @@
-package parser;
+package simplelang.parser;
 
 import org.junit.Before;
 
-import calculator.parser.AntlrParser;
+import simplelang.parser.AntlrParser;
+
 
 /**
  * Tests the ANTLR-based parser.

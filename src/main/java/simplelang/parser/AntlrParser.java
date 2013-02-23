@@ -1,4 +1,4 @@
-package calculator.parser;
+package simplelang.parser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +8,16 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
 
-import calculator.generated.CalculatorLexer;
-import calculator.generated.CalculatorParser;
-import calculator.parser.ast.AST;
-import calculator.parser.ast.BinOpAST;
-import calculator.parser.ast.FunctionCallAST;
-import calculator.parser.ast.NumberAST;
-import calculator.parser.ast.ValueAST;
-import calculator.parser.ast.VariableAssignmentAST;
-import calculator.parser.ast.VariableReferenceAST;
+import simplelang.generated.CalculatorLexer;
+import simplelang.generated.CalculatorParser;
+import simplelang.parser.ast.AST;
+import simplelang.parser.ast.BinOpAST;
+import simplelang.parser.ast.FunctionCallAST;
+import simplelang.parser.ast.NumberAST;
+import simplelang.parser.ast.ValueAST;
+import simplelang.parser.ast.VariableAssignmentAST;
+import simplelang.parser.ast.VariableReferenceAST;
+
 
 public class AntlrParser implements Parser {
     

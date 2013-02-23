@@ -23,10 +23,10 @@ tokens {
 }
 
 @lexer::header {
-  package calculator.generated;
+  package simplelang.generated;
 }
 @parser::header {
-  package calculator.generated;
+  package simplelang.generated;
 }
 
 @rulecatch {

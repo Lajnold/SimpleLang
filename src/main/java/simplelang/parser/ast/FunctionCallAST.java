@@ -1,4 +1,4 @@
-package calculator.parser.ast;
+package simplelang.parser.ast;
 
 import java.util.ArrayList;
 import java.util.List;

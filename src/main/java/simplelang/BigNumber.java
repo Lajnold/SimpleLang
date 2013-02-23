@@ -1,4 +1,4 @@
-package calculator;
+package simplelang;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

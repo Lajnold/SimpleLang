@@ -1,8 +1,9 @@
-package calculator.parser;
+package simplelang.parser;
 
 import java.util.List;
 
-import calculator.parser.ast.AST;
+import simplelang.parser.ast.AST;
+
 
 public interface Parser {
     
