@@ -15,6 +15,7 @@ tokens {
   ASSIGN = '=';
   
   /* Special node types */
+  T_EXPR;
   T_ARG;
   T_CALL;
   T_VAR;
@@ -61,13 +62,13 @@ public parse
   : expression^ EOF!
   | assignment^ EOF!
   ;
-
+  
 expression
-  : a=mulDivExpression^ ((PLUS | MINUS) mulDivExpression)*
+  : expressionImpl  ->  ^(T_EXPR expressionImpl)
   ;
   
-mulDivExpression
-  : unary^ ((TIMES | DIVIDED_BY) unary)*
+expressionImpl
+  : a=unary rest=((PLUS | MINUS | TIMES | DIVIDED_BY) unary)*
   ;
   
 assignment
@@ -75,15 +76,30 @@ assignment
   ;
   
 unary
-  : PLUS? atom  ->  atom
-  | MINUS atom  ->  ^(NUMBER["-1"] TIMES atom)
+  : PLUS? NUMBER  ->  NUMBER
+  | MINUS NUMBER  ->  ^(NUMBER["-1"] TIMES NUMBER)
+  | PLUS? varRef  ->  varRef
+  | MINUS varRef  ->  ^(T_EXPR NUMBER["-1"] TIMES varRef)
+  | PLUS? parenExpression  ->  parenExpression
+  | MINUS parenExpression  ->  ^(T_EXPR NUMBER["-1"] TIMES parenExpression)
+  | PLUS? call  ->  call
+  | MINUS call  ->  ^(T_EXPR NUMBER["-1"] TIMES call)
   ;
   
-atom
-  : NUMBER                       ->  NUMBER
-  | ID                           ->  ^(T_VAR ID)
-  | LPAREN expression RPAREN     ->  expression
-  | ID LPAREN expression RPAREN  ->  ^(T_CALL ID T_ARG expression)
+varRef
+  : ID  ->  ^(T_VAR ID)
+  ;
+  
+parenExpression
+  : LPAREN expressionImpl RPAREN  ->  ^(T_EXPR expressionImpl)
+  ;
+  
+call
+  : ID LPAREN (callArgument (',' callArgument)*)? RPAREN  ->  ^(T_CALL ID callArgument*)
+  ;
+  
+callArgument
+  : expression  ->  ^(T_ARG expression)
   ;
   
   

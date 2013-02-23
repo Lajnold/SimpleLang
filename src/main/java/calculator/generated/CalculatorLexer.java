@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g 2013-02-16 19:15:49
+// $ANTLR 3.4 /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g 2013-02-23 15:25:27
 
   package calculator.generated;
 
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class CalculatorLexer extends Lexer {
     public static final int EOF=-1;
+    public static final int T__23=23;
     public static final int ALPHA=4;
     public static final int ASSIGN=5;
     public static final int DIGIT=6;
@@ -27,8 +28,9 @@ public class CalculatorLexer extends Lexer {
     public static final int T_ARG=17;
     public static final int T_ASSIGN=18;
     public static final int T_CALL=19;
-    public static final int T_VAR=20;
-    public static final int WHITESPACE=21;
+    public static final int T_EXPR=20;
+    public static final int T_VAR=21;
+    public static final int WHITESPACE=22;
 
       @Override
       public void displayRecognitionError(String[] tokenNames,
@@ -221,13 +223,34 @@ public class CalculatorLexer extends Lexer {
     }
     // $ANTLR end "TIMES"
 
+    // $ANTLR start "T__23"
+    public final void mT__23() throws RecognitionException {
+        try {
+            int _type = T__23;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:22:7: ( ',' )
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:22:9: ','
+            {
+            match(','); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__23"
+
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:93:3: ( ( ALPHA | '_' ) ( ALPHA | DIGIT | '_' )* )
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:93:5: ( ALPHA | '_' ) ( ALPHA | DIGIT | '_' )*
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:109:3: ( ( ALPHA | '_' ) ( ALPHA | DIGIT | '_' )* )
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:109:5: ( ALPHA | '_' ) ( ALPHA | DIGIT | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -239,7 +262,7 @@ public class CalculatorLexer extends Lexer {
             }
 
 
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:93:19: ( ALPHA | DIGIT | '_' )*
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:109:19: ( ALPHA | DIGIT | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -289,12 +312,12 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = NUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:97:3: ( ( '1' .. '9' ) ( DIGIT )* | ( DIGIT )+ POINT ( DIGIT )+ | '0' ( '0' .. '7' )+ | '0x1.' ( HEXDIGIT )+ 'p' ( PLUS | MINUS )? ( DIGIT )+ | '0x' ( HEXDIGIT )+ | ( DIGIT )+ ( POINT ( DIGIT )+ )? 'e' ( PLUS | MINUS )? ( DIGIT )+ )
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:113:3: ( ( '1' .. '9' ) ( DIGIT )* | ( DIGIT )+ POINT ( DIGIT )+ | '0' ( '0' .. '7' )+ | '0x1.' ( HEXDIGIT )+ 'p' ( PLUS | MINUS )? ( DIGIT )+ | '0x' ( HEXDIGIT )+ | ( DIGIT )+ ( POINT ( DIGIT )+ )? 'e' ( PLUS | MINUS )? ( DIGIT )+ )
             int alt15=6;
             alt15 = dfa15.predict(input);
             switch (alt15) {
                 case 1 :
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:97:5: ( '1' .. '9' ) ( DIGIT )*
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:113:5: ( '1' .. '9' ) ( DIGIT )*
                     {
                     if ( (input.LA(1) >= '1' && input.LA(1) <= '9') ) {
                         input.consume();
@@ -306,7 +329,7 @@ public class CalculatorLexer extends Lexer {
                     }
 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:97:16: ( DIGIT )*
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:113:16: ( DIGIT )*
                     loop2:
                     do {
                         int alt2=2;
@@ -343,9 +366,9 @@ public class CalculatorLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:98:5: ( DIGIT )+ POINT ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:114:5: ( DIGIT )+ POINT ( DIGIT )+
                     {
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:98:5: ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:114:5: ( DIGIT )+
                     int cnt3=0;
                     loop3:
                     do {
@@ -387,7 +410,7 @@ public class CalculatorLexer extends Lexer {
                     mPOINT(); 
 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:98:18: ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:114:18: ( DIGIT )+
                     int cnt4=0;
                     loop4:
                     do {
@@ -429,11 +452,11 @@ public class CalculatorLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:99:5: '0' ( '0' .. '7' )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:115:5: '0' ( '0' .. '7' )+
                     {
                     match('0'); 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:99:9: ( '0' .. '7' )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:115:9: ( '0' .. '7' )+
                     int cnt5=0;
                     loop5:
                     do {
@@ -475,13 +498,13 @@ public class CalculatorLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:100:5: '0x1.' ( HEXDIGIT )+ 'p' ( PLUS | MINUS )? ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:116:5: '0x1.' ( HEXDIGIT )+ 'p' ( PLUS | MINUS )? ( DIGIT )+
                     {
                     match("0x1."); 
 
 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:100:12: ( HEXDIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:116:12: ( HEXDIGIT )+
                     int cnt6=0;
                     loop6:
                     do {
@@ -522,7 +545,7 @@ public class CalculatorLexer extends Lexer {
 
                     match('p'); 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:100:26: ( PLUS | MINUS )?
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:116:26: ( PLUS | MINUS )?
                     int alt7=2;
                     int LA7_0 = input.LA(1);
 
@@ -549,7 +572,7 @@ public class CalculatorLexer extends Lexer {
                     }
 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:100:42: ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:116:42: ( DIGIT )+
                     int cnt8=0;
                     loop8:
                     do {
@@ -591,13 +614,13 @@ public class CalculatorLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:101:5: '0x' ( HEXDIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:117:5: '0x' ( HEXDIGIT )+
                     {
                     match("0x"); 
 
 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:101:10: ( HEXDIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:117:10: ( HEXDIGIT )+
                     int cnt9=0;
                     loop9:
                     do {
@@ -639,9 +662,9 @@ public class CalculatorLexer extends Lexer {
                     }
                     break;
                 case 6 :
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:102:5: ( DIGIT )+ ( POINT ( DIGIT )+ )? 'e' ( PLUS | MINUS )? ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:118:5: ( DIGIT )+ ( POINT ( DIGIT )+ )? 'e' ( PLUS | MINUS )? ( DIGIT )+
                     {
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:102:5: ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:118:5: ( DIGIT )+
                     int cnt10=0;
                     loop10:
                     do {
@@ -680,7 +703,7 @@ public class CalculatorLexer extends Lexer {
                     } while (true);
 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:102:12: ( POINT ( DIGIT )+ )?
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:118:12: ( POINT ( DIGIT )+ )?
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -689,12 +712,12 @@ public class CalculatorLexer extends Lexer {
                     }
                     switch (alt12) {
                         case 1 :
-                            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:102:13: POINT ( DIGIT )+
+                            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:118:13: POINT ( DIGIT )+
                             {
                             mPOINT(); 
 
 
-                            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:102:19: ( DIGIT )+
+                            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:118:19: ( DIGIT )+
                             int cnt11=0;
                             loop11:
                             do {
@@ -741,7 +764,7 @@ public class CalculatorLexer extends Lexer {
 
                     match('e'); 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:102:32: ( PLUS | MINUS )?
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:118:32: ( PLUS | MINUS )?
                     int alt13=2;
                     int LA13_0 = input.LA(1);
 
@@ -768,7 +791,7 @@ public class CalculatorLexer extends Lexer {
                     }
 
 
-                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:102:48: ( DIGIT )+
+                    // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:118:48: ( DIGIT )+
                     int cnt14=0;
                     loop14:
                     do {
@@ -823,7 +846,7 @@ public class CalculatorLexer extends Lexer {
     // $ANTLR start "DIGIT"
     public final void mDIGIT() throws RecognitionException {
         try {
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:106:3: ( '0' .. '9' )
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:122:3: ( '0' .. '9' )
             // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -849,7 +872,7 @@ public class CalculatorLexer extends Lexer {
     // $ANTLR start "HEXDIGIT"
     public final void mHEXDIGIT() throws RecognitionException {
         try {
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:110:3: ( '0' .. '9' | 'a' .. 'f' )
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:126:3: ( '0' .. '9' | 'a' .. 'f' )
             // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
@@ -875,7 +898,7 @@ public class CalculatorLexer extends Lexer {
     // $ANTLR start "ALPHA"
     public final void mALPHA() throws RecognitionException {
         try {
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:114:3: ( 'a' .. 'z' | 'A' .. 'Z' )
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:130:3: ( 'a' .. 'z' | 'A' .. 'Z' )
             // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
@@ -903,10 +926,10 @@ public class CalculatorLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:119:3: ( ( ' ' | '\\t' )+ )
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:119:5: ( ' ' | '\\t' )+
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:135:3: ( ( ' ' | '\\t' )+ )
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:135:5: ( ' ' | '\\t' )+
             {
-            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:119:5: ( ' ' | '\\t' )+
+            // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:135:5: ( ' ' | '\\t' )+
             int cnt16=0;
             loop16:
             do {
@@ -959,8 +982,8 @@ public class CalculatorLexer extends Lexer {
     // $ANTLR end "WHITESPACE"
 
     public void mTokens() throws RecognitionException {
-        // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:1:8: ( ASSIGN | DIVIDED_BY | LPAREN | MINUS | PLUS | POINT | RPAREN | TIMES | ID | NUMBER | WHITESPACE )
-        int alt17=11;
+        // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:1:8: ( ASSIGN | DIVIDED_BY | LPAREN | MINUS | PLUS | POINT | RPAREN | TIMES | T__23 | ID | NUMBER | WHITESPACE )
+        int alt17=12;
         switch ( input.LA(1) ) {
         case '=':
             {
@@ -1000,6 +1023,11 @@ public class CalculatorLexer extends Lexer {
         case '*':
             {
             alt17=8;
+            }
+            break;
+        case ',':
+            {
+            alt17=9;
             }
             break;
         case 'A':
@@ -1056,7 +1084,7 @@ public class CalculatorLexer extends Lexer {
         case 'y':
         case 'z':
             {
-            alt17=9;
+            alt17=10;
             }
             break;
         case '0':
@@ -1070,13 +1098,13 @@ public class CalculatorLexer extends Lexer {
         case '8':
         case '9':
             {
-            alt17=10;
+            alt17=11;
             }
             break;
         case '\t':
         case ' ':
             {
-            alt17=11;
+            alt17=12;
             }
             break;
         default:
@@ -1153,23 +1181,31 @@ public class CalculatorLexer extends Lexer {
                 }
                 break;
             case 9 :
-                // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:1:65: ID
+                // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:1:65: T__23
+                {
+                mT__23(); 
+
+
+                }
+                break;
+            case 10 :
+                // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:1:71: ID
                 {
                 mID(); 
 
 
                 }
                 break;
-            case 10 :
-                // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:1:68: NUMBER
+            case 11 :
+                // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:1:74: NUMBER
                 {
                 mNUMBER(); 
 
 
                 }
                 break;
-            case 11 :
-                // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:1:75: WHITESPACE
+            case 12 :
+                // /home/lajnold/workspace/SimpleCalc/src/main/antlr/Calculator.g:1:81: WHITESPACE
                 {
                 mWHITESPACE(); 
 
@@ -1245,7 +1281,7 @@ public class CalculatorLexer extends Lexer {
             this.transition = DFA15_transition;
         }
         public String getDescription() {
-            return "96:1: NUMBER : ( ( '1' .. '9' ) ( DIGIT )* | ( DIGIT )+ POINT ( DIGIT )+ | '0' ( '0' .. '7' )+ | '0x1.' ( HEXDIGIT )+ 'p' ( PLUS | MINUS )? ( DIGIT )+ | '0x' ( HEXDIGIT )+ | ( DIGIT )+ ( POINT ( DIGIT )+ )? 'e' ( PLUS | MINUS )? ( DIGIT )+ );";
+            return "112:1: NUMBER : ( ( '1' .. '9' ) ( DIGIT )* | ( DIGIT )+ POINT ( DIGIT )+ | '0' ( '0' .. '7' )+ | '0x1.' ( HEXDIGIT )+ 'p' ( PLUS | MINUS )? ( DIGIT )+ | '0x' ( HEXDIGIT )+ | ( DIGIT )+ ( POINT ( DIGIT )+ )? 'e' ( PLUS | MINUS )? ( DIGIT )+ );";
         }
     }
  

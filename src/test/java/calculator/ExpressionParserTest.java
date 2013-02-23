@@ -4,6 +4,7 @@ import org.junit.*;
 
 import calculator.ExpressionException;
 import calculator.ExpressionParser;
+import calculator.parser.AntlrParser;
 
 import static org.junit.Assert.*;
 
@@ -13,8 +14,8 @@ public class ExpressionParserTest {
     
     @Before
     public void setup() {
-        parser = new ExpressionParser();
-        parser.printTreeOnParse(false);
+        AntlrParser antlrParser = new AntlrParser();
+        parser = new ExpressionParser(antlrParser);
     }
     
     @Test

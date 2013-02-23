@@ -1,11 +1,14 @@
 package calculator;
 
+import calculator.parser.AntlrParser;
+
 public class Main {
     
     public static void main(String[] args) {
         String input = "13 + (2 * 3) / 5 - 5 * 2";
         
-        ExpressionParser parser = new ExpressionParser();
+        AntlrParser antlrParser = new AntlrParser();
+        ExpressionParser parser = new ExpressionParser(antlrParser);
         parser.parse(input);
     }
 }
