@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/lajnold/workspace/SimpleLang/src/main/antlr/Calculator.g 2013-02-23 18:39:20
+// $ANTLR 3.4 /home/lajnold/workspace/SimpleLang/src/main/antlr/Calculator.g 2013-02-24 12:26:25
 
   package simplelang.generated;
 
@@ -430,7 +430,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_expression.add(expression10.getTree());
 
             // AST REWRITE
-            // elements: ID, expression
+            // elements: expression, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1396,7 +1396,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: ID, callArgument
+            // elements: callArgument, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 

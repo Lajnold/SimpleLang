@@ -2,7 +2,7 @@ package simplelang.parser.ast;
 
 public class VariableAssignmentAST extends AST {
 
-    public VariableAssignmentAST(String variableName, ValueAST valueAst) {
+    public VariableAssignmentAST(String variableName, AST valueAst) {
         super(AST.Type.VARIABLE_ASSIGNMENT);
         
         if (variableName == null) throw new IllegalArgumentException("name is null");
@@ -16,7 +16,7 @@ public class VariableAssignmentAST extends AST {
         return variableName;
     }
     
-    public ValueAST getValue() {
+    public AST getValue() {
         return valueAst;
     }
     
@@ -37,5 +37,5 @@ public class VariableAssignmentAST extends AST {
     }
     
     private String variableName;
-    private ValueAST valueAst;
+    private AST valueAst;
 }

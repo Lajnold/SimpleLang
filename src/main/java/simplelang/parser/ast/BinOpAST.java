@@ -1,6 +1,6 @@
 package simplelang.parser.ast;
 
-public class BinOpAST extends ValueAST {
+public class BinOpAST extends AST {
     
     public enum Operation {
         ADD,
@@ -9,7 +9,7 @@ public class BinOpAST extends ValueAST {
         DIV
     }
     
-    public BinOpAST(Operation op, ValueAST left, ValueAST right) {
+    public BinOpAST(Operation op, AST left, AST right) {
         super(AST.Type.BINARY_OP);
         
         if (op == null) throw new IllegalArgumentException("op is null");
@@ -25,11 +25,11 @@ public class BinOpAST extends ValueAST {
         return op;
     }
     
-    public ValueAST getLeftOperand() {
+    public AST getLeftOperand() {
         return left;
     }
     
-    public ValueAST getRightOperand() {
+    public AST getRightOperand() {
         return right;
     }
     
@@ -66,5 +66,5 @@ public class BinOpAST extends ValueAST {
     }
     
     private Operation op;
-    private ValueAST left, right;
+    private AST left, right;
 }

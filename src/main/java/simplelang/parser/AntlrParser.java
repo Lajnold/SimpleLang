@@ -14,7 +14,6 @@ import simplelang.parser.ast.AST;
 import simplelang.parser.ast.BinOpAST;
 import simplelang.parser.ast.FunctionCallAST;
 import simplelang.parser.ast.NumberAST;
-import simplelang.parser.ast.ValueAST;
 import simplelang.parser.ast.VariableAssignmentAST;
 import simplelang.parser.ast.VariableReferenceAST;
 
@@ -56,12 +55,12 @@ public class AntlrParser implements Parser {
     
     private AST makeAssignmentAST(Tree tree) throws SyntaxException {
         String varName = tree.getChild(0).getText();
-        ValueAST value = makeExpressionAST(tree.getChild(1));
+        AST value = makeExpressionAST(tree.getChild(1));
         
         return new VariableAssignmentAST(varName, value);
     }
     
-    private ValueAST makeExpressionAST(Tree tree) throws SyntaxException {
+    private AST makeExpressionAST(Tree tree) throws SyntaxException {
         List<Tree> nodes = new ArrayList<>();
         for (int i = 0; i < tree.getChildCount(); i++) {
             nodes.add(tree.getChild(i));
@@ -70,7 +69,7 @@ public class AntlrParser implements Parser {
         return makeExpressionTreeFromNodes(nodes);
     }
     
-    private ValueAST makeExpressionTreeFromNodes(List<Tree> nodes) throws SyntaxException {
+    private AST makeExpressionTreeFromNodes(List<Tree> nodes) throws SyntaxException {
         
         if (nodes.size() == 1) {
             return makeUnaryAST(nodes.get(0));
@@ -125,14 +124,14 @@ public class AntlrParser implements Parser {
             }
         }
         
-        ValueAST leftTree = makeExpressionTreeFromNodes(leftNodes);
-        ValueAST rightTree = makeExpressionTreeFromNodes(rightNodes);
+        AST leftTree = makeExpressionTreeFromNodes(leftNodes);
+        AST rightTree = makeExpressionTreeFromNodes(rightNodes);
         
         return new BinOpAST(op, leftTree, rightTree);
     }
 
-    private ValueAST makeUnaryAST(Tree tree) throws SyntaxException {
-        ValueAST ast = null;
+    private AST makeUnaryAST(Tree tree) throws SyntaxException {
+        AST ast = null;
         
         switch (tree.getType()) {
             case CalculatorParser.NUMBER:
@@ -183,7 +182,7 @@ public class AntlrParser implements Parser {
             throws SyntaxException {
         String functionName = tree.getChild(0).getText();
         
-        ArrayList<ValueAST> args = new ArrayList<>();
+        ArrayList<AST> args = new ArrayList<>();
         for (int i = 1; i < tree.getChildCount(); i++) {
             Tree argumentTree = tree.getChild(i);
             args.add(makeExpressionAST(argumentTree));

@@ -1,6 +1,6 @@
 package simplelang.parser.ast;
 
-public class VariableReferenceAST extends ValueAST {
+public class VariableReferenceAST extends AST {
     
     public VariableReferenceAST(String variableName) {
         super(AST.Type.VARIABLE_REF);

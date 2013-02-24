@@ -10,11 +10,8 @@ import simplelang.parser.ast.AST;
 import simplelang.parser.ast.BinOpAST;
 import simplelang.parser.ast.FunctionCallAST;
 import simplelang.parser.ast.NumberAST;
-import simplelang.parser.ast.ValueAST;
 import simplelang.parser.ast.VariableAssignmentAST;
 import simplelang.parser.ast.VariableReferenceAST;
-
-
 
 
 public class ExpressionParser {
@@ -37,7 +34,7 @@ public class ExpressionParser {
                     handleAssignment((VariableAssignmentAST) astToHandle);
                     break;
                 default:
-                    retVal = handleExpression((ValueAST) astToHandle);
+                    retVal = handleExpression(astToHandle);
                     break;
             }
         } catch (SyntaxException e) {
@@ -49,13 +46,13 @@ public class ExpressionParser {
     
     private void handleAssignment(VariableAssignmentAST ast) {
         String name = ast.getVariableName();
-        ValueAST valueAst = ast.getValue();
+        AST valueAst = ast.getValue();
         BigNumber value = handleExpression(valueAst);
         
         variables.put(name,  value);
     }
 
-    private BigNumber handleExpression(ValueAST ast) {
+    private BigNumber handleExpression(AST ast) {
         BigNumber value = null;
         
         switch (ast.getType()) {
@@ -90,7 +87,7 @@ public class ExpressionParser {
     private BigNumber handleFunctionCall(FunctionCallAST ast) {
         BigNumber retVal = null;
 
-        List<ValueAST> args = ast.getArgs();
+        List<AST> args = ast.getArgs();
         
         switch (ast.getFunctionName()) {
             case "sin": {

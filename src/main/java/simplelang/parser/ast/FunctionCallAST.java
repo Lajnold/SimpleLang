@@ -3,9 +3,9 @@ package simplelang.parser.ast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FunctionCallAST extends ValueAST {
+public class FunctionCallAST extends AST {
 
-    public FunctionCallAST(String functionName, List<ValueAST> args) {
+    public FunctionCallAST(String functionName, List<AST> args) {
         super(AST.Type.FUNCTION_CALL);
         
         this.functionName = functionName;
@@ -16,8 +16,8 @@ public class FunctionCallAST extends ValueAST {
         return functionName;
     }
 
-    public List<ValueAST> getArgs() {
-        return new ArrayList<ValueAST>(args);
+    public List<AST> getArgs() {
+        return new ArrayList<AST>(args);
     }
     
     @Override
@@ -60,5 +60,5 @@ public class FunctionCallAST extends ValueAST {
     }
 
     private String functionName;
-    private List<ValueAST> args;
+    private List<AST> args;
 }

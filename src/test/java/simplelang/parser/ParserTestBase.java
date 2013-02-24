@@ -14,7 +14,6 @@ import simplelang.parser.ast.AST;
 import simplelang.parser.ast.BinOpAST;
 import simplelang.parser.ast.FunctionCallAST;
 import simplelang.parser.ast.NumberAST;
-import simplelang.parser.ast.ValueAST;
 import simplelang.parser.ast.VariableAssignmentAST;
 import simplelang.parser.ast.VariableReferenceAST;
 
@@ -56,11 +55,11 @@ public abstract class ParserTestBase {
     public void negatedExpression() throws SyntaxException {
         String input = "-(1 + 2)";
         
-        ValueAST mulNum1 = new NumberAST("-1");
+        AST mulNum1 = new NumberAST("-1");
         
-        ValueAST addNum1 = new NumberAST("1");
-        ValueAST addNum2 = new NumberAST("2");
-        ValueAST mulNum2 = new BinOpAST(BinOpAST.Operation.ADD, addNum1, addNum2);
+        AST addNum1 = new NumberAST("1");
+        AST addNum2 = new NumberAST("2");
+        AST mulNum2 = new BinOpAST(BinOpAST.Operation.ADD, addNum1, addNum2);
         
         AST expected = new BinOpAST(BinOpAST.Operation.MUL, mulNum1, mulNum2);
         
@@ -180,7 +179,7 @@ public abstract class ParserTestBase {
     public void functionCallWithNoParameter() throws SyntaxException {
         String input = "fun()";
         
-        List<ValueAST> args = new ArrayList<>();
+        List<AST> args = new ArrayList<>();
         AST expected = new FunctionCallAST("fun", args);
         
         test(input, expected);
@@ -189,9 +188,9 @@ public abstract class ParserTestBase {
     @Test
     public void functionCallWithOneParameter() throws SyntaxException {
         String input = "fun(10)";
-        List<ValueAST> args = new ArrayList<>();
+        List<AST> args = new ArrayList<>();
         
-        ValueAST arg1 = new NumberAST("10");
+        AST arg1 = new NumberAST("10");
         args.add(arg1);
         
         AST expected = new FunctionCallAST("fun", args);
@@ -202,15 +201,15 @@ public abstract class ParserTestBase {
     @Test
     public void functionCallWithTwoParameters() throws SyntaxException {
         String input = "fun(10 + 2, var)";
-        List<ValueAST> args = new ArrayList<>();
+        List<AST> args = new ArrayList<>();
         
         // 10 + 2
-        ValueAST arg1Part1 = new NumberAST("10");
-        ValueAST arg1Part2 = new NumberAST("2");
-        ValueAST arg1 = new BinOpAST(BinOpAST.Operation.ADD, arg1Part1, arg1Part2);
+        AST arg1Part1 = new NumberAST("10");
+        AST arg1Part2 = new NumberAST("2");
+        AST arg1 = new BinOpAST(BinOpAST.Operation.ADD, arg1Part1, arg1Part2);
         args.add(arg1);
         
-        ValueAST arg2 = new VariableReferenceAST("var");
+        AST arg2 = new VariableReferenceAST("var");
         args.add(arg2);
         
         AST expected = new FunctionCallAST("fun", args);
@@ -223,11 +222,11 @@ public abstract class ParserTestBase {
         String input = "fun() + 3";
         
         // fun()
-        List<ValueAST> add1Num1Args = new ArrayList<>();
-        ValueAST add1Num1 = new FunctionCallAST("fun", add1Num1Args);
+        List<AST> add1Num1Args = new ArrayList<>();
+        AST add1Num1 = new FunctionCallAST("fun", add1Num1Args);
         
         // 3
-        ValueAST add1Num2 = new NumberAST("3");
+        AST add1Num2 = new NumberAST("3");
         
         // fun() + 3
         AST expected = new BinOpAST(BinOpAST.Operation.ADD, add1Num1, add1Num2);
@@ -283,7 +282,7 @@ public abstract class ParserTestBase {
     public void variableAssignment() throws SyntaxException {
         String input = "x = 10";
         
-        ValueAST rhsAst = new NumberAST("10");
+        AST rhsAst = new NumberAST("10");
         AST expected = new VariableAssignmentAST("x", rhsAst);
         
         test(input, expected);

@@ -1,6 +1,6 @@
 package simplelang.parser.ast;
 
-public class NumberAST extends ValueAST {
+public class NumberAST extends AST {
     
     public NumberAST(String numberString) {
         super(AST.Type.NUMBER);
