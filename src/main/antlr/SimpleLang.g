@@ -1,4 +1,4 @@
-grammar Calculator;
+grammar SimpleLang;
 
 options {
   output = AST;

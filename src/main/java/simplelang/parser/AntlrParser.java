@@ -10,8 +10,8 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
 
-import simplelang.generated.CalculatorLexer;
-import simplelang.generated.CalculatorParser;
+import simplelang.generated.SimpleLangLexer;
+import simplelang.generated.SimpleLangParser;
 import simplelang.parser.ast.AST;
 import simplelang.parser.ast.BinOpAST;
 import simplelang.parser.ast.BooleanAST;
@@ -34,11 +34,11 @@ public class AntlrParser implements Parser {
     public List<AST> parse(String input) throws SyntaxException {
         ArrayList<AST> returnValue = new ArrayList<>();
         
-        CalculatorLexer lexer = new CalculatorLexer(new ANTLRStringStream(input));
+        SimpleLangLexer lexer = new SimpleLangLexer(new ANTLRStringStream(input));
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        CalculatorParser parser = new CalculatorParser(tokenStream);
+        SimpleLangParser parser = new SimpleLangParser(tokenStream);
         
-        CalculatorParser.parse_return parseReturn;
+        SimpleLangParser.parse_return parseReturn;
         try {
             parseReturn = parser.parse();
             Tree tree = (Tree) parseReturn.getTree();
@@ -47,9 +47,9 @@ public class AntlrParser implements Parser {
                 printTree(tree);
             }
             
-            if (tree.getType() == CalculatorParser.T_ASSIGN) {
+            if (tree.getType() == SimpleLangParser.T_ASSIGN) {
                 returnValue.add(makeAssignmentAST(tree));
-            } else if (tree.getType() == CalculatorParser.T_EXPR) {
+            } else if (tree.getType() == SimpleLangParser.T_EXPR) {
                 returnValue.add(makeExpressionAST(tree));
             }
         } catch (RecognitionException e) {
@@ -114,40 +114,40 @@ public class AntlrParser implements Parser {
     private AST constructBinaryAST(int antlrOpType, AST leftTree, AST rightTree) {
         AST retval;
         switch (antlrOpType) {
-            case CalculatorParser.OR:
+            case SimpleLangParser.OR:
                 retval = new LogicalOpAST(LogicalOpAST.Operator.OR, leftTree, rightTree);
                 break;
-            case CalculatorParser.AND:
+            case SimpleLangParser.AND:
                 retval = new LogicalOpAST(LogicalOpAST.Operator.AND, leftTree, rightTree);
                 break;
-            case CalculatorParser.EQ:
+            case SimpleLangParser.EQ:
                 retval = new LogicalRelOpAST(LogicalRelOpAST.Operator.EQ, leftTree, rightTree);
                 break;
-            case CalculatorParser.NEQ:
+            case SimpleLangParser.NEQ:
                 retval = new LogicalRelOpAST(LogicalRelOpAST.Operator.NEQ, leftTree, rightTree);
                 break;
-            case CalculatorParser.LT:
+            case SimpleLangParser.LT:
                 retval = new LogicalRelOpAST(LogicalRelOpAST.Operator.LT, leftTree, rightTree);
                 break;
-            case CalculatorParser.LTE:
+            case SimpleLangParser.LTE:
                 retval = new LogicalRelOpAST(LogicalRelOpAST.Operator.LTE, leftTree, rightTree);
                 break;
-            case CalculatorParser.GT:
+            case SimpleLangParser.GT:
                 retval = new LogicalRelOpAST(LogicalRelOpAST.Operator.GT, leftTree, rightTree);
                 break;
-            case CalculatorParser.GTE:
+            case SimpleLangParser.GTE:
                 retval = new LogicalRelOpAST(LogicalRelOpAST.Operator.GTE, leftTree, rightTree);
                 break;
-            case CalculatorParser.PLUS:
+            case SimpleLangParser.PLUS:
                 retval = new BinOpAST(BinOpAST.Operator.ADD, leftTree, rightTree);
                 break;
-            case CalculatorParser.MINUS:
+            case SimpleLangParser.MINUS:
                 retval = new BinOpAST(BinOpAST.Operator.SUB, leftTree, rightTree);
                 break;
-            case CalculatorParser.TIMES:
+            case SimpleLangParser.TIMES:
                 retval = new BinOpAST(BinOpAST.Operator.MUL, leftTree, rightTree);
                 break;
-            case CalculatorParser.DIVIDED_BY:
+            case SimpleLangParser.DIVIDED_BY:
                 retval = new BinOpAST(BinOpAST.Operator.DIV, leftTree, rightTree);
                 break;
             default:
@@ -160,23 +160,23 @@ public class AntlrParser implements Parser {
         AST ast = null;
         
         switch (tree.getType()) {
-            case CalculatorParser.NUMBER:
+            case SimpleLangParser.NUMBER:
                 ast = makeNumberAST(tree);
                 break;
-            case CalculatorParser.T_EXPR:
+            case SimpleLangParser.T_EXPR:
                 ast = makeExpressionAST(tree);
                 break;
-            case CalculatorParser.T_CALL:
+            case SimpleLangParser.T_CALL:
                 ast = makeFunctionCallAST(tree);
                 break;
-            case CalculatorParser.T_VAR:
+            case SimpleLangParser.T_VAR:
                 ast = makeVarRefAST(tree);
                 break;
-            case CalculatorParser.T_NOT:
+            case SimpleLangParser.T_NOT:
                 ast = makeNotAST(tree);
                 break;
-            case CalculatorParser.TRUE: /* Fall through */
-            case CalculatorParser.FALSE:
+            case SimpleLangParser.TRUE: /* Fall through */
+            case SimpleLangParser.FALSE:
                 ast = makeBooleanAST(tree);
                 break;
             default:
@@ -189,9 +189,9 @@ public class AntlrParser implements Parser {
 
     private BooleanAST makeBooleanAST(Tree tree) {
         BooleanAST retval = null;
-        if (tree.getType() == CalculatorParser.TRUE) {
+        if (tree.getType() == SimpleLangParser.TRUE) {
             retval = new BooleanAST(true);
-        } else if (tree.getType() == CalculatorParser.FALSE) {
+        } else if (tree.getType() == SimpleLangParser.FALSE) {
             retval = new BooleanAST(false);
         }
         return retval;
@@ -267,18 +267,18 @@ public class AntlrParser implements Parser {
     // Static initialiser.
     {
         int[] operatorsByPrecedence = {
-                CalculatorParser.DIVIDED_BY,
-                CalculatorParser.TIMES,
-                CalculatorParser.MINUS,
-                CalculatorParser.PLUS,
-                CalculatorParser.GTE,
-                CalculatorParser.GT,
-                CalculatorParser.LTE,
-                CalculatorParser.LT,
-                CalculatorParser.NEQ,
-                CalculatorParser.EQ,
-                CalculatorParser.AND,
-                CalculatorParser.OR,
+                SimpleLangParser.DIVIDED_BY,
+                SimpleLangParser.TIMES,
+                SimpleLangParser.MINUS,
+                SimpleLangParser.PLUS,
+                SimpleLangParser.GTE,
+                SimpleLangParser.GT,
+                SimpleLangParser.LTE,
+                SimpleLangParser.LT,
+                SimpleLangParser.NEQ,
+                SimpleLangParser.EQ,
+                SimpleLangParser.AND,
+                SimpleLangParser.OR,
 
         };
         
