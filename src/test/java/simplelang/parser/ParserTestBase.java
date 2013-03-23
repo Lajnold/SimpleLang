@@ -462,8 +462,12 @@ public abstract class ParserTestBase {
         // ||
         //   ||
         //     >
-        //       y
-        //       5
+        //       *
+        //         y
+        //         2
+        //       -
+        //         5
+        //         z
         //     !
         //       isDouble(x, y)
         //    &&
@@ -478,11 +482,19 @@ public abstract class ParserTestBase {
         //        <
         //          20
         //          x
-        String input = "y > 5 || !isDouble(x, y) || y < x && (!(10 < y) || 20 < x)";
+        String input = "y * 2 > 5 - z || !isDouble(x, y) || y < x && (!(10 < y) || 20 < x)";
         
-        // y > 5
-        AST rel1_1 = new VariableReferenceAST("y");
-        AST rel1_2 = new NumberAST("5");
+        // y * 2
+        AST rel1_1_1 = new VariableReferenceAST("y");
+        AST rel1_1_2 = new NumberAST("2");
+        AST rel1_1 = new BinOpAST(BinOpAST.Operator.MUL, rel1_1_1, rel1_1_2);
+        
+        // 5 - z
+        AST rel1_2_1 = new NumberAST("5");
+        AST rel1_2_2 = new VariableReferenceAST("z");
+        AST rel1_2 = new BinOpAST(BinOpAST.Operator.SUB, rel1_2_1, rel1_2_2);
+
+        // (y * 2) > (5 - z)
         AST rel1 = new LogicalRelOpAST(LogicalRelOpAST.Operator.GT, rel1_1, rel1_2);
         
         // !isDouble(x, y)
