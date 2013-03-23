@@ -1,6 +1,7 @@
 package simplelang.parser.ast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FunctionCallAST extends AST {
@@ -17,7 +18,7 @@ public class FunctionCallAST extends AST {
     }
 
     public List<AST> getArgs() {
-        return new ArrayList<AST>(args);
+        return Collections.unmodifiableList(args);
     }
     
     @Override

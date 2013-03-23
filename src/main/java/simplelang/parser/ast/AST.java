@@ -13,7 +13,11 @@ public abstract class AST {
         NUMBER,
         VARIABLE_REF,
         VARIABLE_ASSIGNMENT,
-        FUNCTION_CALL
+        FUNCTION_CALL,
+        LOGICAL_OP,
+        LOGICAL_NOT_OP,
+        RELATIONAL_OP,
+        BOOLEAN
     }
     
     private Type type;

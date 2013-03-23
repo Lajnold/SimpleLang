@@ -2,14 +2,14 @@ package simplelang.parser.ast;
 
 public class BinOpAST extends AST {
     
-    public enum Operation {
+    public enum Operator {
         ADD,
         SUB,
         MUL,
         DIV
     }
     
-    public BinOpAST(Operation op, AST left, AST right) {
+    public BinOpAST(Operator op, AST left, AST right) {
         super(AST.Type.BINARY_OP);
         
         if (op == null) throw new IllegalArgumentException("op is null");
@@ -21,7 +21,7 @@ public class BinOpAST extends AST {
         this.right = right;
     }
     
-    public Operation getOperation() {
+    public Operator getOperation() {
         return op;
     }
     
@@ -65,6 +65,6 @@ public class BinOpAST extends AST {
         }
     }
     
-    private Operation op;
+    private Operator op;
     private AST left, right;
 }

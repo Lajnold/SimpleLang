@@ -13,6 +13,20 @@ tokens {
   LPAREN = '(';
   RPAREN = ')';
   ASSIGN = '=';
+  COMMA = ',';
+  
+  /* Logical and relational tokens */
+  AND = '&&';
+  OR = '||';
+  NOT = '!';
+  EQ = '==';
+  NEQ = '!=';
+  LT = '<';
+  LTE = '<=';
+  GT = '>';
+  GTE = '>=';
+  TRUE = 'true';
+  FALSE = 'false';
   
   /* Special node types */
   T_EXPR;
@@ -20,6 +34,7 @@ tokens {
   T_CALL;
   T_VAR;
   T_ASSIGN;
+  T_NOT;
 }
 
 @lexer::header {
@@ -68,22 +83,35 @@ expression
   ;
   
 expressionImpl
-  : a=unary rest=((PLUS | MINUS | TIMES | DIVIDED_BY) unary)*
+  : operand ((arithmeticOp | relationalOp | logicalOp) operand)*
   ;
   
-assignment
-  : ID ASSIGN expression  ->  ^(T_ASSIGN ID expression)
+arithmeticOp
+  : PLUS | MINUS | TIMES | DIVIDED_BY
   ;
   
-unary
+relationalOp
+  : EQ | NEQ | LT | LTE | GT | GTE
+  ;
+  
+logicalOp
+  : AND | OR
+  ;
+    
+operand
   : PLUS? NUMBER  ->  NUMBER
   | MINUS NUMBER  ->  ^(NUMBER["-1"] TIMES NUMBER)
-  | PLUS? varRef  ->  varRef
-  | MINUS varRef  ->  ^(T_EXPR NUMBER["-1"] TIMES varRef)
-  | PLUS? parenExpression  ->  parenExpression
-  | MINUS parenExpression  ->  ^(T_EXPR NUMBER["-1"] TIMES parenExpression)
-  | PLUS? call  ->  call
-  | MINUS call  ->  ^(T_EXPR NUMBER["-1"] TIMES call)
+  | PLUS? unary   ->  unary
+  | MINUS unary   ->  ^(T_EXPR NUMBER["-1"] TIMES unary)
+  | TRUE          ->  TRUE
+  | NOT TRUE      ->  ^(T_NOT TRUE)
+  | FALSE         ->  FALSE
+  | NOT FALSE     ->  ^(T_NOT FALSE)
+  | NOT unary     ->  ^(T_NOT unary)
+  ;
+    
+unary
+  : varRef | parenExpression | call
   ;
   
 varRef
@@ -91,15 +119,20 @@ varRef
   ;
   
 parenExpression
-  : LPAREN expressionImpl RPAREN  ->  ^(T_EXPR expressionImpl)
+  : LPAREN expression RPAREN  ->  expression
   ;
   
 call
-  : ID LPAREN (callArgument (',' callArgument)*)? RPAREN  ->  ^(T_CALL ID callArgument*)
+  : ID LPAREN (callArgument (COMMA callArgument)*)? RPAREN  ->  ^(T_CALL ID callArgument*)
   ;
   
 callArgument
   : expression  ->  ^(T_ARG expression)
+  ;
+
+  
+assignment
+  : ID ASSIGN expression  ->  ^(T_ASSIGN ID expression)
   ;
   
   
